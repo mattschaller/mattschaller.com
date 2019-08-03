@@ -1,0 +1,6 @@
+deploy:
+  provider: s3
+  access_key_id: "AKIAI2FTZ4H6DAMYJLKA"
+  secret_access_key: "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"
+  bucket: "mattschaller.com"
+  skip_cleanup: true
