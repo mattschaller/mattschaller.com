@@ -19,7 +19,7 @@ function Footer() {
         <a href="https://www.bulma.io">Bulma</a>
         {` on top of `}
         <a href="https://www.aws.com">AWS</a>.
-        <img src="https://travis-ci.com/mattschaller/mattschaller.com.svg?token=d2uhpfGY2GhU1sUNGeDw&branch=master" />
+        <img alt="travis" src="https://travis-ci.com/mattschaller/mattschaller.com.svg?token=d2uhpfGY2GhU1sUNGeDw&branch=master" />
       </footer>
     </section>
   )

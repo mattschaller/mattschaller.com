@@ -1,23 +1,26 @@
 import React from "react"
+import ReCAPTCHA from "react-google-recaptcha";
 
 function Contact({ title, subtitle }) {
 
-  const heroTitle = title || ''
-  const heroSubTitle = subtitle || ''
+  function onChange(value) {
+    console.log("Captcha value:", value);
+  }
+  
 
   return (
     <section class="section">
       <div class="container">
-        <form class="">
+        <form method="POST" action="//formspree.io/mschaller3@gmail.com" class="">
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Name</label>
+              <label class="label" for="name">Name</label>
             </div>
             <div class="field-body">
               <div class="field">
                 <div class="control is-expanded has-icons-left">
-                  <input class="input is-large" type="text" placeholder="Text input"/>
+                  <input class="input is-large" type="text" placeholder="Name" name="name" />
                   <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                   </span>
@@ -28,12 +31,12 @@ function Contact({ title, subtitle }) {
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Email</label>
+              <label class="label" for="email">Email</label>
             </div>
             <div class="field-body">
               <div class="field">
                 <div class="control has-icons-left">
-                  <input class="input is-large" type="email" placeholder="Text input"/>
+                  <input class="input is-large" type="email" placeholder="Email" name="email"/>
                   <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                   </span>
@@ -44,12 +47,15 @@ function Contact({ title, subtitle }) {
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Phone number</label>
+              <label class="label" for="phone">Phone</label>
             </div>
             <div class="field-body">
               <div class="field">
-                <div class="control">
-                  <input class="input is-large" type="tel" placeholder="Text input"/>
+                <div class="control has-icons-left">
+                  <input class="input is-large" type="tel" placeholder="Phone" name="number"/>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-mobile-alt"></i>
+                  </span>
                 </div>
               </div>
             </div>
@@ -57,17 +63,20 @@ function Contact({ title, subtitle }) {
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Subject</label>
+              <label class="label" for="purpose">Purpose</label>
             </div>
             <div class="field-body">
               <div class="field">
-                <div class="control">
+                <div class="control has-icons-left">
                   <div class="select is-large">
-                    <select>
+                    <select name="purpose">
                       <option>General inquiries</option>
                       <option>Interested in hiring me</option>
                       <option>Interested in being hired by me</option>
                     </select>
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-bars"></i>
+                    </span>
                   </div>
                 </div>
               </div>
@@ -77,12 +86,12 @@ function Contact({ title, subtitle }) {
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">Message</label>
+              <label class="label" for="message">Message</label>
             </div>
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <textarea class="textarea is-large" placeholder="Textarea"></textarea>
+                  <textarea class="textarea is-large" placeholder="Message" name="message" />
                 </div>
               </div>
             </div>
@@ -91,28 +100,33 @@ function Contact({ title, subtitle }) {
 
           <div class="field is-horizontal">
             <div class="field-label is-normal">
-              <label class="label">I agree to the <a href="#">terms and conditions</a></label>
+              <label class="label">Ternary</label>
             </div>
             <div class="field-body">
               <div class="field">
                 <div class="control">
-                  <input type="checkbox"/>
+                  <ReCAPTCHA
+                    sitekey="6LdMKrEUAAAAANMKkHdJBvHP5J2wjVfOtjtEjl9A"
+                    onChange={onChange}
+                  />
                 </div>
               </div>
             </div>
           </div>
-
+          
+          <hr/>
+          
           <div class="field is-horizontal">
             <div class="field-label is-normal">
               <label class="label"></label>
             </div>
             <div class="field-body">
-              <div class="field is-grouped is-grouped-right">
+              <div class="field is-grouped">
                 <div class="control">
-                  <button class="button is-info is-large">Submit</button>
+                  <button class="button is-info is-large" type="submit">Submit</button>
                 </div>
                 <div class="control">
-                  <button class="button is-text is-large">Cancel</button>
+                  <button class="button is-text is-large" type="reset">Cancel</button>
                 </div>
               </div>
             </div>

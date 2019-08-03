@@ -34,13 +34,14 @@ function Header({title}) {
               contact
             </Link>
           </div>
+          
           <div class="navbar-end">
             <span class="navbar-item">
-              <a href="google.com" class="button is-primary is-inverted">
+              <a href="//www.github.com/mattschaller" class="button is-primary is-inverted">
                 <span class="icon">
                   <i class="fab fa-github"></i>
                 </span>
-                <span>Download</span>
+                <span>GitHub</span>
               </a>
             </span>
           </div>
