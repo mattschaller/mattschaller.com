@@ -1,4 +1,9 @@
-language: node_js
+language: node_js # Sets which engine use to build the project
+node_js: "node" # Specifies node version to use "node"="latest"
+cache:
+  directories:
+    - "node_modules"
+  npm: true
 deploy:
   provider: s3
   access_key_id: "AKIAI2FTZ4H6DAMYJLKA"
