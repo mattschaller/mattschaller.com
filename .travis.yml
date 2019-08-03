@@ -6,6 +6,10 @@ cache:
   directories:
     - "node_modules"
   npm: true
+before_deploy:
+  - pip install --user awscli
+  - export PATH=$PATH:$HOME/.local/bin
+  - AWS_ACCESS_KEY_ID=$AWS_KEY AWS_SECRET_ACCESS_KEY=$AWS_SECRET aws s3 rm s3://$BUCKET --recursive --region=$REGION
 deploy:
   provider: s3
   access_key_id: $AWS_KEY
