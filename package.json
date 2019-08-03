@@ -1,0 +1,36 @@
+{
+  "name": "mattschaller.com",
+  "version": "1.0.0",
+  "description": "Matt Schallers personal web domain.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattschaller/mattschaller.com.git"
+  },
+  "keywords": [
+    "personal",
+    "web",
+    "developer",
+    "code",
+    "engineer",
+    "manager",
+    "information",
+    "technology",
+    "portfolio",
+    "personal",
+    "website",
+    "website",
+    "resume",
+    "portfolio",
+    "biography"
+  ],
+  "author": "Matthew Schaller",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattschaller/mattschaller.com/issues"
+  },
+  "homepage": "https://github.com/mattschaller/mattschaller.com#readme"
+}
