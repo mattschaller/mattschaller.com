@@ -19,7 +19,7 @@ class BlogPostTemplate extends React.Component {
         />
         <article class="article">
           <Hero title={post.frontmatter.title} subtitle={post.frontmatter.date} />
-          <section class="section">
+          <section class="section content">
             <div class="container">
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
               <hr/>

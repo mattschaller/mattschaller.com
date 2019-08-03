@@ -11,7 +11,7 @@ function Footer() {
 
   return (
     <section>
-      <footer class="footer">
+      <footer class="">
         © {new Date().getFullYear()} Matthew Schaller. Built with
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
@@ -19,6 +19,7 @@ function Footer() {
         <a href="https://www.bulma.io">Bulma</a>
         {` on top of `}
         <a href="https://www.aws.com">AWS</a>.
+        <img src="https://travis-ci.com/mattschaller/mattschaller.com.svg?token=d2uhpfGY2GhU1sUNGeDw&branch=master" />
       </footer>
     </section>
   )

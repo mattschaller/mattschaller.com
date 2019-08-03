@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/mattschaller/mattschaller.com.svg?token=d2uhpfGY2GhU1sUNGeDw&branch=master)](https://travis-ci.com/mattschaller/mattschaller.com)
+
 <!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
 <p align="center">
   <a href="https://www.gatsbyjs.org">

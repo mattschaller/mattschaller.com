@@ -1,12 +1,16 @@
 language: node_js # Sets which engine use to build the project
 node_js: "node" # Specifies node version to use "node"="latest"
+install: npm install
+script: gatsby build
 cache:
   directories:
     - "node_modules"
   npm: true
 deploy:
   provider: s3
-  access_key_id: "AKIAI2FTZ4H6DAMYJLKA"
-  secret_access_key: "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"
+  access_key_id: $AWS_KEY
+  secret_access_key: $AWS_SECRET
   bucket: "mattschaller.com"
   skip_cleanup: true
+  acl: public_read
+  local_dir: public
