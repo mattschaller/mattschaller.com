@@ -1,15 +1,15 @@
-language: node_js # Sets which engine use to build the project
-node_js: "node" # Specifies node version to use "node"="latest"
+language: node_js 
+node_js: "node" # "node" is latest
 install: npm install
 script: gatsby build
 cache:
+  npm: true
   directories:
     - "node_modules"
-  npm: true
 before_deploy:
   - pip install --user awscli
   - export PATH=$PATH:$HOME/.local/bin
-  - AWS_ACCESS_KEY_ID=$AWS_KEY AWS_SECRET_ACCESS_KEY=$AWS_SECRET aws s3 rm s3://$BUCKET --recursive --region=$REGION
+  - AWS_ACCESS_KEY_ID=$AWS_KEY AWS_SECRET_ACCESS_KEY=$AWS_SECRET aws s3 rm s3://$BUCKET --region=$REGION
 deploy:
   provider: s3
   access_key_id: $AWS_KEY
@@ -18,3 +18,6 @@ deploy:
   skip_cleanup: true
   acl: public_read
   local_dir: public
+branches:
+  only:
+    - master
