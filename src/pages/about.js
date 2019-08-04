@@ -67,8 +67,8 @@ class About extends React.Component {
           <div class="container content">
             <h2>About this site</h2>
             <p>
-              This site is built with <a href="//www.gatsbyjs.org/">GatsbyJS</a> using <a href="//github.com/gatsbyjs/gatsby-starter-blog">gatsby-starter-blog</a>.  This site uses <a href="//bulma.io">Bulma CSS</a>, <a href="//fontawesome.com">Font Awesome</a>, and <a href="//formspree.io">Formspree</a>. This site is hosted on <a href="//aws.amazon.com/s3/">Amazon S3</a>, and currently deployed using <a href="//travis-ci.com">Travis CI</a>.</p>
-              <img class="" alt="travis" src="https://travis-ci.com/mattschaller/mattschaller.com.svg?token=d2uhpfGY2GhU1sUNGeDw&branch=master" />
+              This site is built with <a href="//www.gatsbyjs.org/">GatsbyJS</a> using <a href="//github.com/gatsbyjs/gatsby-starter-blog">gatsby-starter-blog</a>.  This site uses <a href="//bulma.io">Bulma CSS</a>, <a href="//fontawesome.com">Font Awesome</a>, and <a href="//formspree.io">Formspree</a>. This site is hosted on <a href="//aws.amazon.com/s3/">Amazon S3</a>, and currently deployed using <a href="//travis-ci.com">Travis CI</a>. Source code can be found on <a href="//github.com/mattschaller/mattschaller.com">GitHub.</a>.</p>
+              <img src="https://travis-ci.org/mattschaller/mattschaller.com.svg?branch=master" alt="travis"/>
           </div>
         </section>
 
