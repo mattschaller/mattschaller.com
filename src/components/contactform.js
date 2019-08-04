@@ -102,10 +102,17 @@ function Contact({ title, subtitle }) {
             <div class="field-body">
               <div class="field is-grouped">
                 <div class="control">
-                  <button class="button is-info is-large" type="submit">Submit</button>
+                  <button class="button is-info is-large" type="submit">
+                    <span class="icon">
+                      <i class="fas fa-paper-plane"></i>
+                    </span>
+                    <span>Submit</span>
+                  </button>
                 </div>
                 <div class="control">
-                  <button class="button is-text is-large" type="reset">Cancel</button>
+                  <button class="button is-white is-large" type="reset">
+                    <span>Reset</span>
+                  </button>
                 </div>
               </div>
             </div>
