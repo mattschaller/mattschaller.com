@@ -14,7 +14,7 @@ deploy:
   provider: s3
   access_key_id: $AWS_KEY
   secret_access_key: $AWS_SECRET
-  bucket: "mattschaller.com"
+  bucket: $BUCKET
   skip_cleanup: true
   acl: public_read
   local_dir: public
