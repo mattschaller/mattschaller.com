@@ -11,7 +11,6 @@ import { Link } from "gatsby"
 function Header({title}) {
 
   return (
-    <section>
       <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
 
         <div class="navbar-brand">
@@ -46,9 +45,7 @@ function Header({title}) {
             </span>
           </div>
         </div>
-
       </nav>
-    </section>
   )
 }
 

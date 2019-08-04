@@ -1,4 +1,5 @@
 import React from "react"
+import heroStyles from "./hero.module.css"  
 
 function Hero({ title, subtitle }) {
 
@@ -6,7 +7,7 @@ function Hero({ title, subtitle }) {
   const heroSubTitle = subtitle || ''
 
   return (
-    <section class="hero is-primary">
+    <section className={`hero is-fullheight is-primary ${heroStyles.hero}`}>
       <div class="hero-body">
         <div class="container">
           <h1 class="title">

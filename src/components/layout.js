@@ -12,13 +12,9 @@ class Layout extends React.Component {
     if(location.pathname === rootPath ) {
 
       return (
-        <section class="hero is-primary is-fullheight">
-          <div class="hero-head">
+        <section class="">
             <Header title={title} />
-          </div>
-          <div class="hero-body">
             <Hero title={title} subtitle='Personal homebase for matthew schaller.' />
-          </div>
           <div class="hero-foot">
             
           <Footer />
