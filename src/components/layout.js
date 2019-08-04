@@ -16,7 +16,6 @@ class Layout extends React.Component {
             <Header title={title} />
             <Hero title={title} subtitle='Personal homebase for matthew schaller.' />
           <div class="hero-foot">
-            
           <Footer />
           </div>
         </section>
