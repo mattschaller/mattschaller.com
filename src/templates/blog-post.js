@@ -24,8 +24,6 @@ class BlogPostTemplate extends React.Component {
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
               <hr/>
             </div>
-          </section>
-          <section class="section">
             <div class="container">
               <Bio />
               <nav class="pagination" role="navigation" aria-label="pagination">

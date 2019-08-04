@@ -9,15 +9,14 @@ class Layout extends React.Component {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
 
+    console.log(this)
+
     if(location.pathname === rootPath ) {
 
       return (
         <section class="">
-            <Header title={title} />
-            <Hero title={title} subtitle='Personal homebase for matthew schaller.' />
-          <div class="hero-foot">
-          <Footer />
-          </div>
+            <Header title={title} full='true'/>
+            <Hero title={title} subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.' full='true' />
         </section>
       )
 

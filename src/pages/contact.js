@@ -13,7 +13,7 @@ class Contact extends React.Component {
     return (
       <Layout location={this.props.location} title={siteTitle}>
         <SEO title="Contact me" />
-        <Hero title="Contact me" subtitle="Lets get in touch." />
+        <Hero title="Contact me" subtitle="Lets get in touch." full="false" />
         <ContactForm/>
       </Layout>
     )

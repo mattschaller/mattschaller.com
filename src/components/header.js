@@ -8,26 +8,38 @@
 import React from "react"
 import { Link } from "gatsby"
 
-function Header({title}) {
+function Header({title, full}) {
+
+  let headerClasses = (full === 'true') ? 'is-primary' : '';
+
+  let onClick = function(){
+    let toggle = document.querySelector(".nav-toggle"); 
+    let menu = document.querySelector(".navbar-menu");
+    if (toggle && menu) {
+      toggle.classList.toggle("is-active"); 
+      menu.classList.toggle("is-active");   
+    }
+  }
+
 
   return (
-      <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+      <nav role="navigation" aria-label="main navigation" className={`navbar is-transparent ${headerClasses}`}>
 
         <div class="navbar-brand">
           <Link className="navbar-item" to={`/`}>
             {title}
           </Link>
-          <span class="navbar-burger burger" data-target="navbarMenuHeroA">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
+          <a role="button" class="navbar-burger nav-toggle" aria-label="menu" aria-expanded="false" onClick={onClick}>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
         </div>
-
+        
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-start">
-            <Link className="navbar-item" to={`/blog`}>
-              blog
+            <Link className="navbar-item" to={`/about`}>
+              about
             </Link>
             <Link className="navbar-item " to={`/contact`}>
               contact
@@ -36,11 +48,11 @@ function Header({title}) {
           
           <div class="navbar-end">
             <span class="navbar-item">
-              <a href="//www.github.com/mattschaller" class="button is-primary is-inverted">
+              <a href="//www.github.com/mattschaller" class="button is-primary is-inverted" target="_blank">
                 <span class="icon">
-                  <i class="fab fa-github"></i>
+                  <i class="fas fa-sign-in-alt"></i>
                 </span>
-                <span>GitHub</span>
+                <span>Login</span>
               </a>
             </span>
           </div>

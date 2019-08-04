@@ -2,6 +2,17 @@
 // If need, change your variables before importing Bulma
 $title-color: #ff0000;
 
-$footer-padding: 1rem 1.5rem 1rem;
+$midnight-blue: #1a315b;
+
+$primary: $midnight-blue;
 
 @import "~bulma/bulma.sass";
+
+
+#nav-toggle-state {
+  display: none;
+}
+
+#nav-toggle-state:checked ~ .nav-menu {
+display: block;
+}
