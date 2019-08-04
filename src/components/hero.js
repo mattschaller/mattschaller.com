@@ -14,12 +14,7 @@ function Hero({ title, subtitle, full }) {
       <p class="is-pulled-right is-size-7">
         {`© `}
         {new Date().getFullYear()} 
-        {` Matthew Schaller. Built with `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-        {` & `}
-        <a href="https://www.bulma.io">Bulma</a>
-        {` on top of `}
-        <a href="https://www.aws.com">AWS</a>.
+        {` Matthew Schaller. All rights reserved.`}
       </p>
     </div>
   )

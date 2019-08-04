@@ -14,9 +14,6 @@ function Contact({ title, subtitle }) {
         <form method="POST" action="//formspree.io/mschaller3@gmail.com" class="">
 
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label" for="name">Name</label>
-            </div>
             <div class="field-body">
               <div class="field">
                 <div class="control is-expanded has-icons-left">
@@ -30,9 +27,6 @@ function Contact({ title, subtitle }) {
           </div>
 
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label" for="email">Email</label>
-            </div>
             <div class="field-body">
               <div class="field">
                 <div class="control has-icons-left">
@@ -46,9 +40,6 @@ function Contact({ title, subtitle }) {
           </div>
 
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label" for="phone">Phone</label>
-            </div>
             <div class="field-body">
               <div class="field">
                 <div class="control has-icons-left">
@@ -62,9 +53,6 @@ function Contact({ title, subtitle }) {
           </div>
 
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label" for="purpose">Purpose</label>
-            </div>
             <div class="field-body">
               <div class="field">
                 <div class="control has-icons-left">
@@ -73,6 +61,7 @@ function Contact({ title, subtitle }) {
                       <option>General inquiries</option>
                       <option>Interested in hiring me</option>
                       <option>Interested in being hired by me</option>
+                      <option>Other</option>
                     </select>
                     <span class="icon is-small is-left">
                       <i class="fas fa-bars"></i>
@@ -85,9 +74,6 @@ function Contact({ title, subtitle }) {
 
 
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label" for="message">Message</label>
-            </div>
             <div class="field-body">
               <div class="field">
                 <div class="control">
@@ -96,12 +82,10 @@ function Contact({ title, subtitle }) {
               </div>
             </div>
           </div>
-
+          
+          <hr/>
 
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label">Ternary</label>
-            </div>
             <div class="field-body">
               <div class="field">
                 <div class="control">
@@ -114,12 +98,7 @@ function Contact({ title, subtitle }) {
             </div>
           </div>
           
-          <hr/>
-          
           <div class="field is-horizontal">
-            <div class="field-label is-normal">
-              <label class="label"></label>
-            </div>
             <div class="field-body">
               <div class="field is-grouped">
                 <div class="control">

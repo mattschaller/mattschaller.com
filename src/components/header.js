@@ -26,10 +26,10 @@ function Header({title, full}) {
       <nav role="navigation" aria-label="main navigation" className={`navbar is-transparent ${headerClasses}`}>
 
         <div class="navbar-brand">
-          <Link className="navbar-item" to={`/`}>
+          <Link className="navbar-item is-shadowless" to={`/`}>
             {title}
           </Link>
-          <a role="button" class="navbar-burger nav-toggle" aria-label="menu" aria-expanded="false" onClick={onClick}>
+          <a role="button" class="navbar-burger nav-toggle is-shadowless" aria-label="menu" aria-expanded="false" onClick={onClick}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -38,22 +38,22 @@ function Header({title, full}) {
         
         <div id="navbarMenuHeroA" class="navbar-menu">
           <div class="navbar-start">
-            <Link className="navbar-item" to={`/about`}>
+            <Link className="navbar-item is-shadowless" to={`/about`}>
               about
             </Link>
-            <Link className="navbar-item " to={`/contact`}>
+            <Link className="navbar-item is-shadowless" to={`/contact`}>
               contact
             </Link>
           </div>
           
           <div class="navbar-end">
             <span class="navbar-item">
-              <a href="//www.github.com/mattschaller" class="button is-primary is-inverted" target="_blank">
+              <Link className="button is-primary is-inverted" to={`/`}>
                 <span class="icon">
                   <i class="fas fa-sign-in-alt"></i>
                 </span>
                 <span>Login</span>
-              </a>
+              </Link>
             </span>
           </div>
         </div>
