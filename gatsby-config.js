@@ -10,7 +10,12 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-sitemap`,
+      options: {
+        exclude: ["/blog*"]
+      }
+    },
     `gatsby-plugin-sass`,
     {
       resolve: `gatsby-source-filesystem`,
