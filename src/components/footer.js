@@ -8,7 +8,6 @@
 import React from "react"
 
 function Footer() {
-
   return (
     <section className="">
       <footer className="footer">
@@ -17,7 +16,7 @@ function Footer() {
             <div className="column ">
               <p className="is-pulled-right is-size-6">
                 {`© `}
-                {new Date().getFullYear()} 
+                {new Date().getFullYear()}
                 {` Matthew Schaller.  All rights reserved.`}
               </p>
             </div>

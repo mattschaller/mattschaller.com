@@ -9,32 +9,44 @@ class BlogPostTemplate extends React.Component {
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout 
-        location={this.props.location} 
+      <Layout
+        location={this.props.location}
         title={post.frontmatter.title}
-        subtitle="Welcome to posttown" 
+        subtitle="Welcome to posttown"
         description={post.frontmatter.description || post.excerpt}
-        fullsize="false">
-        
+        fullsize="false"
+      >
         <article className="article">
           <section className="section content">
             <div className="container">
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
-              <hr/>
+              <hr />
             </div>
             <div className="container">
               <Bio />
-              <nav className="pagination" role="navigation" aria-label="pagination">
+              <nav
+                className="pagination"
+                role="navigation"
+                aria-label="pagination"
+              >
                 {previous && (
-                    <Link className="pagination-previous" to={previous.fields.slug} rel="prev">
-                      ← {previous.frontmatter.title}
-                    </Link>
-                  )}
-                  {next && (
-                    <Link className="pagination-next" to={next.fields.slug} rel="next">
-                      {next.frontmatter.title} →
-                    </Link>
-                  )}
+                  <Link
+                    className="pagination-previous"
+                    to={previous.fields.slug}
+                    rel="prev"
+                  >
+                    ← {previous.frontmatter.title}
+                  </Link>
+                )}
+                {next && (
+                  <Link
+                    className="pagination-next"
+                    to={next.fields.slug}
+                    rel="next"
+                  >
+                    {next.frontmatter.title} →
+                  </Link>
+                )}
               </nav>
             </div>
           </section>

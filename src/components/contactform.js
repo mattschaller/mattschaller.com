@@ -1,21 +1,33 @@
 import React from "react"
 
 function Contact() {
-  
-
   return (
     <section className="section">
       <div className="container">
-        <form method="POST" acceptCharset="utf-8" action="//formspree.io/mschaller3@gmail.com" className="">
+        <form
+          method="POST"
+          acceptCharset="utf-8"
+          action="//formspree.io/mschaller3@gmail.com"
+          className=""
+        >
           <input type="hidden" name="_next" value="//mattschaller.com" />
-          <input type="hidden" name="_subject" value="mattschaller.com:  Contact Form Submission" />
+          <input
+            type="hidden"
+            name="_subject"
+            value="mattschaller.com:  Contact Form Submission"
+          />
           <input type="text" name="_gotcha" className="is-hidden" />
 
           <div className="field is-horizontal">
             <div className="field-body">
               <div className="field">
                 <div className="control is-expanded has-icons-left">
-                  <input className="input is-large" type="text" placeholder="Name" name="name" />
+                  <input
+                    className="input is-large"
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                  />
                   <span className="icon is-small is-left">
                     <i className="fas fa-user"></i>
                   </span>
@@ -28,7 +40,12 @@ function Contact() {
             <div className="field-body">
               <div className="field">
                 <div className="control has-icons-left">
-                  <input className="input is-large" type="email" placeholder="Email" name="_replyto"/>
+                  <input
+                    className="input is-large"
+                    type="email"
+                    placeholder="Email"
+                    name="_replyto"
+                  />
                   <span className="icon is-small is-left">
                     <i className="fas fa-envelope"></i>
                   </span>
@@ -41,7 +58,12 @@ function Contact() {
             <div className="field-body">
               <div className="field">
                 <div className="control has-icons-left">
-                  <input className="input is-large" type="tel" placeholder="Phone" name="number"/>
+                  <input
+                    className="input is-large"
+                    type="tel"
+                    placeholder="Phone"
+                    name="number"
+                  />
                   <span className="icon is-small is-left">
                     <i className="fas fa-mobile-alt"></i>
                   </span>
@@ -70,20 +92,22 @@ function Contact() {
             </div>
           </div>
 
-
           <div className="field is-horizontal">
             <div className="field-body">
               <div className="field">
                 <div className="control">
-                  <textarea className="textarea is-large" placeholder="Message" name="message" />
+                  <textarea
+                    className="textarea is-large"
+                    placeholder="Message"
+                    name="message"
+                  />
                 </div>
               </div>
             </div>
           </div>
-          
-          <hr/>
 
-          
+          <hr />
+
           <div className="field is-horizontal">
             <div className="field-body">
               <div className="field is-grouped">

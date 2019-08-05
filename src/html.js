@@ -12,8 +12,12 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         {props.headComponents}
-        <script async src="//use.fontawesome.com/releases/v5.0.6/js/all.js"/>
-        <link type="text/css" rel="stylesheet" href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+        <script async src="//use.fontawesome.com/releases/v5.0.6/js/all.js" />
+        <link
+          type="text/css"
+          rel="stylesheet"
+          href="//stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
       </head>
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
