@@ -23,8 +23,8 @@ function Hero({ title, subtitle, fullsize }) {
     <section className={`hero is-primary ${heroClasses} ${heroStyles.hero}`}>
       <div className="hero-body">
         <div className="container">
-          <h1 className="title">{heroTitle}</h1>
-          <h2 className="subtitle">{heroSubTitle}</h2>
+          <h1 className="title is-1 is-spaced">{heroTitle}</h1>
+          <h2 className="subtitle is-4">{heroSubTitle}</h2>
         </div>
       </div>
       {heroFooter}
