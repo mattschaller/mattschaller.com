@@ -8,7 +8,7 @@ class About extends React.Component {
       <Layout 
         location={this.props.location} 
         title="About me"
-        subtitle="Welcome to abouttown" 
+        subtitle="" 
         fullsize="false">
         <section className="section">
           <div className="container content">
