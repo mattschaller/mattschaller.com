@@ -51,7 +51,6 @@ function Header({title, fullsize}) {
                 <span className="icon">
                   <i className="fas fa-sign-in-alt"></i>
                 </span>
-                <span>Login</span>
               </Link>
             </span>
           </div>
