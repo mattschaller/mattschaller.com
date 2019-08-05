@@ -2,31 +2,29 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import SEO from "../components/seo"
-import Hero from "../components/hero"
 
 class BlogPostTemplate extends React.Component {
   render() {
     const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
     const { previous, next } = this.props.pageContext
 
     return (
-      <Layout location={this.props.location} title={siteTitle}>
-        <SEO
-          title={post.frontmatter.title}
-          description={post.frontmatter.description || post.excerpt}
-        />
-        <article class="article">
-          <Hero title={post.frontmatter.title} subtitle={post.frontmatter.date} />
-          <section class="section content">
-            <div class="container">
+      <Layout 
+        location={this.props.location} 
+        title={post.frontmatter.title}
+        subtitle="Welcome to posttown" 
+        description={post.frontmatter.description || post.excerpt}
+        fullsize="false">
+        
+        <article className="article">
+          <section className="section content">
+            <div className="container">
               <div dangerouslySetInnerHTML={{ __html: post.html }} />
               <hr/>
             </div>
-            <div class="container">
+            <div className="container">
               <Bio />
-              <nav class="pagination" role="navigation" aria-label="pagination">
+              <nav className="pagination" role="navigation" aria-label="pagination">
                 {previous && (
                     <Link className="pagination-previous" to={previous.fields.slug} rel="prev">
                       ← {previous.frontmatter.title}

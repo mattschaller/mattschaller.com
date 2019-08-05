@@ -1,70 +1,68 @@
 import React from "react"
-import ReCAPTCHA from "react-google-recaptcha";
 
-function Contact({ title, subtitle }) {
-
-  function onChange(value) {
-    console.log("Captcha value:", value);
-  }
+function Contact() {
   
 
   return (
-    <section class="section">
-      <div class="container">
-        <form method="POST" action="//formspree.io/mschaller3@gmail.com" class="">
+    <section className="section">
+      <div className="container">
+        <form method="POST" acceptCharset="utf-8" action="//formspree.io/mschaller3@gmail.com" className="">
+          <input type="hidden" name="_next" value="//mattschaller.com" />
+          <input type="hidden" name="_subject" value="mattschaller.com:  Contact Form Submission" />
+          <input type="text" name="_gotcha" className="is-hidden" />
 
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field">
-                <div class="control is-expanded has-icons-left">
-                  <input class="input is-large" type="text" placeholder="Name" name="name" />
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field">
+                <div className="control is-expanded has-icons-left">
+                  <input className="input is-large" type="text" placeholder="Name" name="name" />
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-user"></i>
                   </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field">
-                <div class="control has-icons-left">
-                  <input class="input is-large" type="email" placeholder="Email" name="email"/>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field">
+                <div className="control has-icons-left">
+                  <input className="input is-large" type="email" placeholder="Email" name="_replyto"/>
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-envelope"></i>
                   </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field">
-                <div class="control has-icons-left">
-                  <input class="input is-large" type="tel" placeholder="Phone" name="number"/>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-mobile-alt"></i>
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field">
+                <div className="control has-icons-left">
+                  <input className="input is-large" type="tel" placeholder="Phone" name="number"/>
+                  <span className="icon is-small is-left">
+                    <i className="fas fa-mobile-alt"></i>
                   </span>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field">
-                <div class="control has-icons-left">
-                  <div class="select is-large">
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field">
+                <div className="control has-icons-left">
+                  <div className="select is-large">
                     <select name="purpose">
                       <option>General inquiries</option>
                       <option>Interested in hiring me</option>
                       <option>Interested in being hired by me</option>
                       <option>Other</option>
                     </select>
-                    <span class="icon is-small is-left">
-                      <i class="fas fa-bars"></i>
+                    <span className="icon is-small is-left">
+                      <i className="fas fa-bars"></i>
                     </span>
                   </div>
                 </div>
@@ -73,11 +71,11 @@ function Contact({ title, subtitle }) {
           </div>
 
 
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <textarea class="textarea is-large" placeholder="Message" name="message" />
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field">
+                <div className="control">
+                  <textarea className="textarea is-large" placeholder="Message" name="message" />
                 </div>
               </div>
             </div>
@@ -85,32 +83,20 @@ function Contact({ title, subtitle }) {
           
           <hr/>
 
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field">
-                <div class="control">
-                  <ReCAPTCHA
-                    sitekey="6LdMKrEUAAAAANMKkHdJBvHP5J2wjVfOtjtEjl9A"
-                    onChange={onChange}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
           
-          <div class="field is-horizontal">
-            <div class="field-body">
-              <div class="field is-grouped">
-                <div class="control">
-                  <button class="button is-info is-large" type="submit">
-                    <span class="icon">
-                      <i class="fas fa-paper-plane"></i>
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field is-grouped">
+                <div className="control">
+                  <button className="button is-info is-large" type="submit">
+                    <span className="icon">
+                      <i className="fas fa-paper-plane"></i>
                     </span>
                     <span>Submit</span>
                   </button>
                 </div>
-                <div class="control">
-                  <button class="button is-white is-large" type="reset">
+                <div className="control">
+                  <button className="button is-white is-large" type="reset">
                     <span>Reset</span>
                   </button>
                 </div>
@@ -120,8 +106,6 @@ function Contact({ title, subtitle }) {
         </form>
       </div>
     </section>
-
-
   )
 }
 

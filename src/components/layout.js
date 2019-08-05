@@ -2,34 +2,36 @@ import React from "react"
 import Header from "../components/header"
 import Hero from "../components/hero"
 import Footer from "../components/footer"
+import SEO from "../components/seo"
 
 class Layout extends React.Component {
 
   render() {
-    const { location, title, children } = this.props
+    const { location, title, children, fullsize, subtitle } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
-
-    console.log(this)
 
     if(location.pathname === rootPath ) {
 
       return (
-        <section class="">
-            <Header title={title} full='true'/>
-            <Hero title={title} subtitle='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque interdum rutrum sodales. Nullam mattis fermentum libero, non volutpat.' full='true' />
+        <section className="">
+            <SEO title={title} />
+            <Header title={title} fullsize={fullsize} />
+            <Hero title={title} subtitle={this.props.subtitle} fullsize={fullsize} />
+            {children}
         </section>
       )
 
     }else{
 
       return (
-        <div>
-            <Header title={title} />
-          
-              {children}
+        <section className="">
+          <SEO title={title} />
+          <Header title={title} fullsize={fullsize} />
+          <Hero title={title} subtitle={subtitle} fullsize={fullsize} />
 
-            <Footer />
-        </div>
+          {children}
+          <Footer />
+        </section>
       )
       
     }

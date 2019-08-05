@@ -54,7 +54,7 @@ const Bio = () => {
         }}
       />
       <p>
-        Written by <strong>{author}</strong>: Over 10 years experience in software engineering and 5 years in technical leadership.  Director of Development at <a href="//multiplica.us">multiplica.us</a> in Miami. 
+        Written by <strong>{author}</strong>: Over 8 years experience in software engineering and 5 years in technical leadership.  Director of Development at <a href="//multiplica.us">multiplica.us</a> in Miami. 
         {` `}
         <a href={`https://twitter.com/${social.twitter}`}>
           You should follow him on Twitter

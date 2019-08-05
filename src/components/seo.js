@@ -24,7 +24,6 @@ function SEO({ description, lang, meta, title }) {
       }
     `
   )
-
   const metaDescription = description || site.siteMetadata.description
 
   return (
@@ -75,6 +74,7 @@ function SEO({ description, lang, meta, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
+  title: `Home`,
   description: ``,
 }
 

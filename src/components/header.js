@@ -8,9 +8,9 @@
 import React from "react"
 import { Link } from "gatsby"
 
-function Header({title, full}) {
+function Header({title, fullsize}) {
 
-  let headerClasses = (full === 'true') ? 'is-primary' : '';
+  let headerClasses = (fullsize === 'true') ? 'is-primary' : '';
 
   let onClick = function(){
     let toggle = document.querySelector(".nav-toggle"); 
@@ -24,33 +24,35 @@ function Header({title, full}) {
 
   return (
       <nav role="navigation" aria-label="main navigation" className={`navbar is-transparent ${headerClasses}`}>
-
-        <div class="navbar-brand">
+        <div className="navbar-brand">
           <Link className="navbar-item is-shadowless" to={`/`}>
-            {title}
+            {`matt schaller`}
           </Link>
-          <span role="button" class="navbar-burger nav-toggle is-shadowless" aria-label="menu" aria-expanded="false" onClick={onClick}>
+          <span role="button" className="navbar-burger nav-toggle is-shadowless" aria-label="menu" aria-expanded="false" onClick={onClick}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
           </span>
         </div>
         
-        <div id="navbarMenuHeroA" class="navbar-menu">
-          <div class="navbar-start">
-            <Link className="navbar-item is-shadowless" to={`/about`}>
-              about
-            </Link>
+        <div id="navbarMenuHeroA" className="navbar-menu">
+          <div className="navbar-start">
+          <Link className="navbar-item is-shadowless" to={`/about`}>
+            about
+          </Link>
+          <Link className="navbar-item is-shadowless" to={`/blog`}>
+            blog
+          </Link>
             <Link className="navbar-item is-shadowless" to={`/contact`}>
               contact
             </Link>
           </div>
           
-          <div class="navbar-end">
-            <span class="navbar-item">
+          <div className="navbar-end">
+            <span className="navbar-item">
               <Link className="button is-primary is-inverted" to={`/`}>
-                <span class="icon">
-                  <i class="fas fa-sign-in-alt"></i>
+                <span className="icon">
+                  <i className="fas fa-sign-in-alt"></i>
                 </span>
                 <span>Login</span>
               </Link>

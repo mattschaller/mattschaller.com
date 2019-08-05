@@ -1,33 +1,33 @@
 import React from "react"
 import heroStyles from "./hero.module.css"
 
-function Hero({ title, subtitle, full }) {
+function Hero({ title, subtitle, fullsize }) {
 
   const heroTitle = title || ''
   const heroSubTitle = subtitle || ''
   
 
   // Hack to conditionally add a hero-foot on homepage only
-  let heroClasses = (full === 'true') ? 'is-fullheight-with-navbar' : 'is-medium';
+  let heroClasses = (fullsize === 'true') ? 'is-fullheight-with-navbar' : 'is-medium';
   let heroFooter = (
-    <div class="hero-foot">
-      <p class="is-pulled-right is-size-7">
+    <div className="hero-foot">
+      <p className="is-pulled-right is-size-7">
         {`© `}
         {new Date().getFullYear()} 
         {` Matthew Schaller. All rights reserved.`}
       </p>
     </div>
   )
-  heroFooter = (full === 'true') ? heroFooter : '';
+  heroFooter = (fullsize === 'true') ? heroFooter : '';
 
   return (
     <section className={`hero is-primary ${heroClasses} ${heroStyles.hero}`}>
-      <div class="hero-body">
-        <div class="container">
-          <h1 class="title">
+      <div className="hero-body">
+        <div className="container">
+          <h1 className="title">
             {heroTitle}
           </h1>
-          <h2 class="subtitle">
+          <h2 className="subtitle">
             {heroSubTitle}
           </h2>
         </div>

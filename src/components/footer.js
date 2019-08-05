@@ -10,12 +10,12 @@ import React from "react"
 function Footer() {
 
   return (
-    <section class="">
-      <footer class="footer">
-        <div class="container">
-          <div class="columns">
-            <div class="column ">
-              <p class="is-pulled-right is-size-6">
+    <section className="">
+      <footer className="footer">
+        <div className="container">
+          <div className="columns">
+            <div className="column ">
+              <p className="is-pulled-right is-size-6">
                 {`© `}
                 {new Date().getFullYear()} 
                 {` Matthew Schaller.  All rights reserved.`}
