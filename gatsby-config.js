@@ -3,6 +3,7 @@ module.exports = {
     title: `matt schaller`,
     author: `Matthew Schaller`,
     description: `Matthew Schaller's personal homepage.`,
+    language: `en`,
     siteUrl: `https://www.mattschaller.com/`,
     social: {
       twitter: `mattschaller`,
