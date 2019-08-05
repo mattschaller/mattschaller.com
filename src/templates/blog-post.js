@@ -32,7 +32,7 @@ class BlogPostTemplate extends React.Component {
                 {previous && (
                   <Link
                     className="pagination-previous"
-                    to={previous.fields.slug}
+                    to={`blog`+ previous.fields.slug}
                     rel="prev"
                   >
                     ← {previous.frontmatter.title}
@@ -41,7 +41,7 @@ class BlogPostTemplate extends React.Component {
                 {next && (
                   <Link
                     className="pagination-next"
-                    to={next.fields.slug}
+                    to={`blog`+ next.fields.slug}
                     rel="next"
                   >
                     {next.frontmatter.title} →

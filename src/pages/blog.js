@@ -21,7 +21,7 @@ class BlogIndex extends React.Component {
                 <article className="article content" key={node.fields.slug}>
                   <section className="section">
                     <h3>
-                      <Link to={node.fields.slug}>{title}</Link>
+                      <Link to={`/blog/` + node.fields.slug}>{title}</Link>
                     </h3>
                     <small>{node.frontmatter.date}</small>
                     <p
