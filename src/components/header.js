@@ -40,9 +40,6 @@ function Header({title, fullsize}) {
           <Link className="navbar-item is-shadowless" to={`/about`}>
             about
           </Link>
-          <Link className="navbar-item is-shadowless" to={`/blog`}>
-            blog
-          </Link>
             <Link className="navbar-item is-shadowless" to={`/contact`}>
               contact
             </Link>
