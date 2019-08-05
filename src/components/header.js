@@ -29,11 +29,11 @@ function Header({title, full}) {
           <Link className="navbar-item is-shadowless" to={`/`}>
             {title}
           </Link>
-          <a role="button" class="navbar-burger nav-toggle is-shadowless" aria-label="menu" aria-expanded="false" onClick={onClick}>
+          <span role="button" class="navbar-burger nav-toggle is-shadowless" aria-label="menu" aria-expanded="false" onClick={onClick}>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
-          </a>
+          </span>
         </div>
         
         <div id="navbarMenuHeroA" class="navbar-menu">
