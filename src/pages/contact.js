@@ -5,12 +5,13 @@ import ContactForm from "../components/contactform"
 class Contact extends React.Component {
   render() {
     return (
-      <Layout 
-        location={this.props.location} 
+      <Layout
+        location={this.props.location}
         title="Contact me"
-        subtitle="Lets get in touch and talk about stuff." 
-        fullsize="false">
-        <ContactForm/>
+        subtitle="Lets get in touch and talk about stuff."
+        fullsize="false"
+      >
+        <ContactForm />
       </Layout>
     )
   }

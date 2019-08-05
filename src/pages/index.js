@@ -6,13 +6,13 @@ import "./mystyles.scss"
 
 class Index extends React.Component {
   render() {
-
     return (
-      <Layout 
-        location={this.props.location} 
+      <Layout
+        location={this.props.location}
         title="Home"
-        subtitle="Welcome to indextown" 
-        fullsize="true" />
+        subtitle="Welcome to indextown"
+        fullsize="true"
+      />
     )
   }
 }
