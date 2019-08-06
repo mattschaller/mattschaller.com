@@ -1,8 +1,9 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
+import { withAuthenticator, Connect } from 'aws-amplify-react'
 
-class About extends React.Component {
+class Dashboard extends React.Component {
   render() {
     return (
       <Layout
@@ -121,7 +122,7 @@ class About extends React.Component {
   }
 }
 
-export default About
+export default withAuthenticator(Dashboard)
 
 export const pageQuery = graphql`
   query {

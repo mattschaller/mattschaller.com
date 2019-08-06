@@ -1,3 +1,10 @@
+let activeEnv = process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+console.log(`Using environment config: '${activeEnv}'`)
+
+require("dotenv").config({
+  path: `.env.${activeEnv}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `matt schaller`,
@@ -10,6 +17,19 @@ module.exports = {
     },
   },
   plugins: [
+    {
+      resolve: "gatsby-source-graphql",
+      options: {
+        // This type will contain remote schema Query type
+        typeName: "Posts",
+        // This is the field under which it's accessible
+        fieldName: "posts",
+        url: `${process.env.GRAPHQL_ENDPOINT}`,
+        headers: {
+          Authorization: `bearer ${process.env.GRAPHQL_API_KEY}`,
+        },
+      },
+    },
     {
       resolve: `gatsby-plugin-sitemap`,
       options: {
@@ -58,7 +78,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `UA-18781495-3`,
+        trackingId:`${process.env.GOOGLE_ANALYTICS_ID}`,
       },
     },
     `gatsby-plugin-feed`,
