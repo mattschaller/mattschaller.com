@@ -1,9 +1,3 @@
-type Query {
-  getBlogs: [Blog]
-  getPosts: [Post]
-  getComments: [Comment]
-}
-
 type Mutation {
   upvotePost(id: String!): Post
   downvotePost(id: String!): Post
@@ -11,32 +5,42 @@ type Mutation {
   downvoteComment(id: String!): Comment
 }
 
-type Blog @model {
+type Blog @model @versioned {
   id: ID!
-  name: String!
+  name: String
   description: String
-  revision: Int!
+  created: AWSDateTime 
+  modified: AWSDateTime
   posts: [Post] @connection(name: "BlogPosts")
 }
 
-type Post @model {
+type Post @model @versioned {
   id: ID!
-  author: String!
-  title: String!
-  body: String!
-  likes: Int!
-  dislikes: Int!
-  revision: Int!
+  author: String
+  title: String
+  body: String
+  excerpt: String
+  slug: String
+  likes: Int
+  dislikes: Int
+  createdAt: AWSDateTime
+  modified: AWSDateTime
   blog: Blog @connection(name: "BlogPosts")
+  tags: [Tag] @connection(name: "PostTags")
   comments: [Comment] @connection(name: "PostComments")
 }
 
-type Comment @model {
+type Tag @model {
   id: ID!
-  author: String!
+  value: String
+  post: Post @connection(name: "PostTags")
+}
+
+type Comment @model @versioned {
+  id: ID!
+  author: String
   body: String
-  likes: Int!
-  dislikes: Int!
-  revision: Int!
+  likes: Int
+  dislikes: Int
   post: Post @connection(name: "PostComments")
 }

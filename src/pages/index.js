@@ -51,7 +51,7 @@ export const pageQuery = graphql`
         items {
           id
           name
-          revision
+          version
           posts {
             items {
               id
@@ -68,7 +68,7 @@ export const pageQuery = graphql`
           body
           likes
           dislikes
-          revision
+          version
           blog {
             id
           }
@@ -87,7 +87,7 @@ export const pageQuery = graphql`
           body
           likes
           dislikes
-          revision
+          version
           post {
             id
           }

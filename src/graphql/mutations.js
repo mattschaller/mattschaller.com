@@ -7,17 +7,29 @@ export const upvotePost = `mutation UpvotePost($id: String!) {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -26,10 +38,11 @@ export const upvotePost = `mutation UpvotePost($id: String!) {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -39,17 +52,29 @@ export const downvotePost = `mutation DownvotePost($id: String!) {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -58,10 +83,11 @@ export const downvotePost = `mutation DownvotePost($id: String!) {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -72,25 +98,34 @@ export const upvoteComment = `mutation UpvoteComment($id: String!) {
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;
@@ -101,25 +136,34 @@ export const downvoteComment = `mutation DownvoteComment($id: String!) {
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;
@@ -128,19 +172,25 @@ export const createBlog = `mutation CreateBlog($input: CreateBlogInput!) {
     id
     name
     description
-    revision
+    created
+    modified
     posts {
       items {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -149,19 +199,25 @@ export const updateBlog = `mutation UpdateBlog($input: UpdateBlogInput!) {
     id
     name
     description
-    revision
+    created
+    modified
     posts {
       items {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -170,19 +226,25 @@ export const deleteBlog = `mutation DeleteBlog($input: DeleteBlogInput!) {
     id
     name
     description
-    revision
+    created
+    modified
     posts {
       items {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -192,17 +254,29 @@ export const createPost = `mutation CreatePost($input: CreatePostInput!) {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -211,10 +285,11 @@ export const createPost = `mutation CreatePost($input: CreatePostInput!) {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -224,17 +299,29 @@ export const updatePost = `mutation UpdatePost($input: UpdatePostInput!) {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -243,10 +330,11 @@ export const updatePost = `mutation UpdatePost($input: UpdatePostInput!) {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -256,17 +344,29 @@ export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -275,9 +375,112 @@ export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
+    }
+    version
+  }
+}
+`;
+export const createTag = `mutation CreateTag($input: CreateTagInput!) {
+  createTag(input: $input) {
+    id
+    value
+    post {
+      id
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      createdAt
+      modified
+      blog {
+        id
+        name
+        description
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
+      }
+      comments {
+        nextToken
+      }
+      version
+    }
+  }
+}
+`;
+export const updateTag = `mutation UpdateTag($input: UpdateTagInput!) {
+  updateTag(input: $input) {
+    id
+    value
+    post {
+      id
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      createdAt
+      modified
+      blog {
+        id
+        name
+        description
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
+      }
+      comments {
+        nextToken
+      }
+      version
+    }
+  }
+}
+`;
+export const deleteTag = `mutation DeleteTag($input: DeleteTagInput!) {
+  deleteTag(input: $input) {
+    id
+    value
+    post {
+      id
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      createdAt
+      modified
+      blog {
+        id
+        name
+        description
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
+      }
+      comments {
+        nextToken
+      }
+      version
     }
   }
 }
@@ -289,25 +492,34 @@ export const createComment = `mutation CreateComment($input: CreateCommentInput!
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;
@@ -318,25 +530,34 @@ export const updateComment = `mutation UpdateComment($input: UpdateCommentInput!
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;
@@ -347,25 +568,34 @@ export const deleteComment = `mutation DeleteComment($input: DeleteCommentInput!
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;

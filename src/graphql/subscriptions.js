@@ -6,19 +6,25 @@ export const onCreateBlog = `subscription OnCreateBlog {
     id
     name
     description
-    revision
+    created
+    modified
     posts {
       items {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -27,19 +33,25 @@ export const onUpdateBlog = `subscription OnUpdateBlog {
     id
     name
     description
-    revision
+    created
+    modified
     posts {
       items {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -48,19 +60,25 @@ export const onDeleteBlog = `subscription OnDeleteBlog {
     id
     name
     description
-    revision
+    created
+    modified
     posts {
       items {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -70,17 +88,29 @@ export const onCreatePost = `subscription OnCreatePost {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -89,10 +119,11 @@ export const onCreatePost = `subscription OnCreatePost {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -102,17 +133,29 @@ export const onUpdatePost = `subscription OnUpdatePost {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -121,10 +164,11 @@ export const onUpdatePost = `subscription OnUpdatePost {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -134,17 +178,29 @@ export const onDeletePost = `subscription OnDeletePost {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -153,9 +209,112 @@ export const onDeletePost = `subscription OnDeletePost {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
+    }
+    version
+  }
+}
+`;
+export const onCreateTag = `subscription OnCreateTag {
+  onCreateTag {
+    id
+    value
+    post {
+      id
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      createdAt
+      modified
+      blog {
+        id
+        name
+        description
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
+      }
+      comments {
+        nextToken
+      }
+      version
+    }
+  }
+}
+`;
+export const onUpdateTag = `subscription OnUpdateTag {
+  onUpdateTag {
+    id
+    value
+    post {
+      id
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      createdAt
+      modified
+      blog {
+        id
+        name
+        description
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
+      }
+      comments {
+        nextToken
+      }
+      version
+    }
+  }
+}
+`;
+export const onDeleteTag = `subscription OnDeleteTag {
+  onDeleteTag {
+    id
+    value
+    post {
+      id
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      createdAt
+      modified
+      blog {
+        id
+        name
+        description
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
+      }
+      comments {
+        nextToken
+      }
+      version
     }
   }
 }
@@ -167,25 +326,34 @@ export const onCreateComment = `subscription OnCreateComment {
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;
@@ -196,25 +364,34 @@ export const onUpdateComment = `subscription OnUpdateComment {
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;
@@ -225,25 +402,34 @@ export const onDeleteComment = `subscription OnDeleteComment {
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;

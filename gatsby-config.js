@@ -6,7 +6,6 @@ require("dotenv").config({
   path: `.env.${activeEnv}`,
 })
 
-console.log(`${process.env.GRAPHQL_ENDPOINT}`);
 module.exports = {
   siteMetadata: {
     title: `matt schaller`,

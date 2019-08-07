@@ -1,106 +1,30 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getBlogs = `query GetBlogs {
-  getBlogs {
-    id
-    name
-    description
-    revision
-    posts {
-      items {
-        id
-        author
-        title
-        body
-        likes
-        dislikes
-        revision
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const getPosts = `query GetPosts {
-  getPosts {
-    id
-    author
-    title
-    body
-    likes
-    dislikes
-    revision
-    blog {
-      id
-      name
-      description
-      revision
-      posts {
-        nextToken
-      }
-    }
-    comments {
-      items {
-        id
-        author
-        body
-        likes
-        dislikes
-        revision
-      }
-      nextToken
-    }
-  }
-}
-`;
-export const getComments = `query GetComments {
-  getComments {
-    id
-    author
-    body
-    likes
-    dislikes
-    revision
-    post {
-      id
-      author
-      title
-      body
-      likes
-      dislikes
-      revision
-      blog {
-        id
-        name
-        description
-        revision
-      }
-      comments {
-        nextToken
-      }
-    }
-  }
-}
-`;
 export const getBlog = `query GetBlog($id: ID!) {
   getBlog(id: $id) {
     id
     name
     description
-    revision
+    created
+    modified
     posts {
       items {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -114,10 +38,12 @@ export const listBlogs = `query ListBlogs(
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
     }
     nextToken
   }
@@ -129,17 +55,29 @@ export const getPost = `query GetPost($id: ID!) {
     author
     title
     body
+    excerpt
+    slug
     likes
     dislikes
-    revision
+    createdAt
+    modified
     blog {
       id
       name
       description
-      revision
+      created
+      modified
       posts {
         nextToken
       }
+      version
+    }
+    tags {
+      items {
+        id
+        value
+      }
+      nextToken
     }
     comments {
       items {
@@ -148,10 +86,11 @@ export const getPost = `query GetPost($id: ID!) {
         body
         likes
         dislikes
-        revision
+        version
       }
       nextToken
     }
+    version
   }
 }
 `;
@@ -166,17 +105,83 @@ export const listPosts = `query ListPosts(
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
+      }
+      version
+    }
+    nextToken
+  }
+}
+`;
+export const getTag = `query GetTag($id: ID!) {
+  getTag(id: $id) {
+    id
+    value
+    post {
+      id
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      createdAt
+      modified
+      blog {
+        id
+        name
+        description
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
+      }
+      comments {
+        nextToken
+      }
+      version
+    }
+  }
+}
+`;
+export const listTags = `query ListTags($filter: ModelTagFilterInput, $limit: Int, $nextToken: String) {
+  listTags(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      value
+      post {
+        id
+        author
+        title
+        body
+        excerpt
+        slug
+        likes
+        dislikes
+        createdAt
+        modified
+        version
       }
     }
     nextToken
@@ -190,25 +195,34 @@ export const getComment = `query GetComment($id: ID!) {
     body
     likes
     dislikes
-    revision
     post {
       id
       author
       title
       body
+      excerpt
+      slug
       likes
       dislikes
-      revision
+      createdAt
+      modified
       blog {
         id
         name
         description
-        revision
+        created
+        modified
+        version
+      }
+      tags {
+        nextToken
       }
       comments {
         nextToken
       }
+      version
     }
+    version
   }
 }
 `;
@@ -224,16 +238,20 @@ export const listComments = `query ListComments(
       body
       likes
       dislikes
-      revision
       post {
         id
         author
         title
         body
+        excerpt
+        slug
         likes
         dislikes
-        revision
+        createdAt
+        modified
+        version
       }
+      version
     }
     nextToken
   }
