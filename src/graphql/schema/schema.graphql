@@ -1,10 +1,15 @@
-type Query {
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+}
+
+type RootQueryType {
   getBlogs: [Blog]
   getPosts: [Post]
   getComments: [Comment]
 }
 
-type Mutation {
+type RootMutationType {
   upvotePost(id: String!): Post
   downvotePost(id: String!): Post
   upvoteComment(id: String!): Comment

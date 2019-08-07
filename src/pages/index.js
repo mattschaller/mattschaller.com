@@ -21,36 +21,9 @@ const client = new ApolloClient({
   },
 });
 
-client
-  .mutate({
-    mutation: gql`
-    {
-      createBlog(input: "Blog number 1") {
-        id
-        name
-      }
-    }
-  `
-})
-.then(result => console.log(result));
-
-client
-  .query({
-    query: gql`
-      {
-        listBlogs(){
-          id
-          name
-        }
-      }
-    `
-  })
-  .then(result => console.log(result));
-
-
 class Index extends React.Component {
-
   render() {
+    console.log(this);
     return (
       <ApolloProvider client={client}>
         <Layout
@@ -71,6 +44,55 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+      }
+    }
+    posts {
+      listBlogs {
+        items {
+          id
+          name
+          revision
+          posts {
+            items {
+              id
+            }
+          }
+        }
+        nextToken
+      }
+      listPosts {
+        items {
+          id
+          author
+          title
+          body
+          likes
+          dislikes
+          revision
+          blog {
+            id
+          }
+          comments {
+            items {
+              id
+            }
+          }
+        }
+        nextToken
+      }
+      listComments {
+        items {
+          id
+          author
+          body
+          likes
+          dislikes
+          revision
+          post {
+            id
+          }
+        }
+        nextToken
       }
     }
   }
