@@ -11,12 +11,12 @@ export const upvotePost = `mutation UpvotePost($id: String!) {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -38,6 +38,8 @@ export const upvotePost = `mutation UpvotePost($id: String!) {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -56,12 +58,12 @@ export const downvotePost = `mutation DownvotePost($id: String!) {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -83,6 +85,8 @@ export const downvotePost = `mutation DownvotePost($id: String!) {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -98,6 +102,8 @@ export const upvoteComment = `mutation UpvoteComment($id: String!) {
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -107,12 +113,12 @@ export const upvoteComment = `mutation UpvoteComment($id: String!) {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -136,6 +142,8 @@ export const downvoteComment = `mutation DownvoteComment($id: String!) {
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -145,12 +153,12 @@ export const downvoteComment = `mutation DownvoteComment($id: String!) {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -170,8 +178,8 @@ export const downvoteComment = `mutation DownvoteComment($id: String!) {
 export const createBlog = `mutation CreateBlog($input: CreateBlogInput!) {
   createBlog(input: $input) {
     id
-    name
-    description
+    title
+    body
     created
     modified
     posts {
@@ -184,7 +192,7 @@ export const createBlog = `mutation CreateBlog($input: CreateBlogInput!) {
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -197,8 +205,8 @@ export const createBlog = `mutation CreateBlog($input: CreateBlogInput!) {
 export const updateBlog = `mutation UpdateBlog($input: UpdateBlogInput!) {
   updateBlog(input: $input) {
     id
-    name
-    description
+    title
+    body
     created
     modified
     posts {
@@ -211,7 +219,7 @@ export const updateBlog = `mutation UpdateBlog($input: UpdateBlogInput!) {
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -224,8 +232,8 @@ export const updateBlog = `mutation UpdateBlog($input: UpdateBlogInput!) {
 export const deleteBlog = `mutation DeleteBlog($input: DeleteBlogInput!) {
   deleteBlog(input: $input) {
     id
-    name
-    description
+    title
+    body
     created
     modified
     posts {
@@ -238,7 +246,7 @@ export const deleteBlog = `mutation DeleteBlog($input: DeleteBlogInput!) {
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -258,12 +266,12 @@ export const createPost = `mutation CreatePost($input: CreatePostInput!) {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -285,6 +293,8 @@ export const createPost = `mutation CreatePost($input: CreatePostInput!) {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -303,12 +313,12 @@ export const updatePost = `mutation UpdatePost($input: UpdatePostInput!) {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -330,6 +340,8 @@ export const updatePost = `mutation UpdatePost($input: UpdatePostInput!) {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -348,12 +360,12 @@ export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -375,6 +387,8 @@ export const deletePost = `mutation DeletePost($input: DeletePostInput!) {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -396,12 +410,12 @@ export const createTag = `mutation CreateTag($input: CreateTagInput!) {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -430,12 +444,12 @@ export const updateTag = `mutation UpdateTag($input: UpdateTagInput!) {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -464,12 +478,12 @@ export const deleteTag = `mutation DeleteTag($input: DeleteTagInput!) {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -492,6 +506,8 @@ export const createComment = `mutation CreateComment($input: CreateCommentInput!
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -501,12 +517,12 @@ export const createComment = `mutation CreateComment($input: CreateCommentInput!
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -530,6 +546,8 @@ export const updateComment = `mutation UpdateComment($input: UpdateCommentInput!
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -539,12 +557,12 @@ export const updateComment = `mutation UpdateComment($input: UpdateCommentInput!
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -568,6 +586,8 @@ export const deleteComment = `mutation DeleteComment($input: DeleteCommentInput!
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -577,12 +597,12 @@ export const deleteComment = `mutation DeleteComment($input: DeleteCommentInput!
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version

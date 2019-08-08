@@ -7,8 +7,8 @@ type Mutation {
 
 type Blog @model @versioned {
   id: ID!
-  name: String
-  description: String
+  title: String
+  body: String
   created: AWSDateTime 
   modified: AWSDateTime
   posts: [Post] @connection(name: "BlogPosts")
@@ -23,7 +23,7 @@ type Post @model @versioned {
   slug: String
   likes: Int
   dislikes: Int
-  createdAt: AWSDateTime
+  created: AWSDateTime
   modified: AWSDateTime
   blog: Blog @connection(name: "BlogPosts")
   tags: [Tag] @connection(name: "PostTags")
@@ -42,5 +42,7 @@ type Comment @model @versioned {
   body: String
   likes: Int
   dislikes: Int
+  created: AWSDateTime
+  modified: AWSDateTime
   post: Post @connection(name: "PostComments")
 }

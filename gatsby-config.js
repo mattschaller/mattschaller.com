@@ -33,13 +33,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: path.resolve(`./content/blog`),
-        name: `blog`,
-      },
-    },
-    {
       resolve: "gatsby-source-graphql",
       options: {
         // This type will contain remote schema Query type

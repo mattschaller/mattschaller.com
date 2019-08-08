@@ -3,8 +3,6 @@ import { graphql } from "gatsby"
 import Layout from "../components/layout"
 import { ApolloProvider } from "react-apollo";
 import ApolloClient from "apollo-boost"
-import { gql } from "apollo-boost"
-
 
 
 import "./mystyles.scss"
@@ -50,7 +48,7 @@ export const pageQuery = graphql`
       listBlogs {
         items {
           id
-          name
+          title
           version
           posts {
             items {

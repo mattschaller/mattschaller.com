@@ -5,21 +5,22 @@ import Layout from "../components/layout"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.markdownRemark
+    console.log(this);
+    const post = this.props.data.posts.getPost
     const { previous, next } = this.props.pageContext
 
     return (
       <Layout
         location={this.props.location}
-        title={post.frontmatter.title}
-        subtitle="Welcome to posttown"
-        description={post.frontmatter.description || post.excerpt}
+        title={post.title}
+        subtitle={post.excerpt}
+        description={post.body || post.excerpt}
         fullsize="false"
       >
         <article className="article">
           <section className="section content">
             <div className="container">
-              <div dangerouslySetInnerHTML={{ __html: post.html }} />
+              <div dangerouslySetInnerHTML={{ __html: post.body }} />
               <hr />
             </div>
             <div className="container">
@@ -59,22 +60,52 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-        author
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+query getPost($id: ID!) { 
+  posts {
+    getPost(id: $id) {
       id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
+      author
+      title
+      body
+      excerpt
+      slug
+      likes
+      dislikes
+      created
+      modified
+      blog {
+        id
         title
-        date(formatString: "MMMM DD, YYYY")
-        description
+        body
+        created
+        modified
+        posts {
+          nextToken
+        }
+        version
       }
+      tags {
+        items {
+          id
+          value
+        }
+        nextToken
+      }
+      comments {
+        items {
+          id
+          author
+          body
+          likes
+          dislikes
+          created
+          modified
+          version
+        }
+        nextToken
+      }
+      version
     }
   }
+}
 `

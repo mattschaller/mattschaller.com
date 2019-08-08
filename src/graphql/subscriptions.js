@@ -4,8 +4,8 @@
 export const onCreateBlog = `subscription OnCreateBlog {
   onCreateBlog {
     id
-    name
-    description
+    title
+    body
     created
     modified
     posts {
@@ -18,7 +18,7 @@ export const onCreateBlog = `subscription OnCreateBlog {
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -31,8 +31,8 @@ export const onCreateBlog = `subscription OnCreateBlog {
 export const onUpdateBlog = `subscription OnUpdateBlog {
   onUpdateBlog {
     id
-    name
-    description
+    title
+    body
     created
     modified
     posts {
@@ -45,7 +45,7 @@ export const onUpdateBlog = `subscription OnUpdateBlog {
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -58,8 +58,8 @@ export const onUpdateBlog = `subscription OnUpdateBlog {
 export const onDeleteBlog = `subscription OnDeleteBlog {
   onDeleteBlog {
     id
-    name
-    description
+    title
+    body
     created
     modified
     posts {
@@ -72,7 +72,7 @@ export const onDeleteBlog = `subscription OnDeleteBlog {
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -92,12 +92,12 @@ export const onCreatePost = `subscription OnCreatePost {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -119,6 +119,8 @@ export const onCreatePost = `subscription OnCreatePost {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -137,12 +139,12 @@ export const onUpdatePost = `subscription OnUpdatePost {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -164,6 +166,8 @@ export const onUpdatePost = `subscription OnUpdatePost {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -182,12 +186,12 @@ export const onDeletePost = `subscription OnDeletePost {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -209,6 +213,8 @@ export const onDeletePost = `subscription OnDeletePost {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -230,12 +236,12 @@ export const onCreateTag = `subscription OnCreateTag {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -264,12 +270,12 @@ export const onUpdateTag = `subscription OnUpdateTag {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -298,12 +304,12 @@ export const onDeleteTag = `subscription OnDeleteTag {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -326,6 +332,8 @@ export const onCreateComment = `subscription OnCreateComment {
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -335,12 +343,12 @@ export const onCreateComment = `subscription OnCreateComment {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -364,6 +372,8 @@ export const onUpdateComment = `subscription OnUpdateComment {
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -373,12 +383,12 @@ export const onUpdateComment = `subscription OnUpdateComment {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -402,6 +412,8 @@ export const onDeleteComment = `subscription OnDeleteComment {
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -411,12 +423,12 @@ export const onDeleteComment = `subscription OnDeleteComment {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version

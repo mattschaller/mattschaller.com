@@ -4,8 +4,8 @@
 export const getBlog = `query GetBlog($id: ID!) {
   getBlog(id: $id) {
     id
-    name
-    description
+    title
+    body
     created
     modified
     posts {
@@ -18,7 +18,7 @@ export const getBlog = `query GetBlog($id: ID!) {
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -36,8 +36,8 @@ export const listBlogs = `query ListBlogs(
   listBlogs(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -59,12 +59,12 @@ export const getPost = `query GetPost($id: ID!) {
     slug
     likes
     dislikes
-    createdAt
+    created
     modified
     blog {
       id
-      name
-      description
+      title
+      body
       created
       modified
       posts {
@@ -86,6 +86,8 @@ export const getPost = `query GetPost($id: ID!) {
         body
         likes
         dislikes
+        created
+        modified
         version
       }
       nextToken
@@ -109,12 +111,12 @@ export const listPosts = `query ListPosts(
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -144,12 +146,12 @@ export const getTag = `query GetTag($id: ID!) {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -179,7 +181,7 @@ export const listTags = `query ListTags($filter: ModelTagFilterInput, $limit: In
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }
@@ -195,6 +197,8 @@ export const getComment = `query GetComment($id: ID!) {
     body
     likes
     dislikes
+    created
+    modified
     post {
       id
       author
@@ -204,12 +208,12 @@ export const getComment = `query GetComment($id: ID!) {
       slug
       likes
       dislikes
-      createdAt
+      created
       modified
       blog {
         id
-        name
-        description
+        title
+        body
         created
         modified
         version
@@ -238,6 +242,8 @@ export const listComments = `query ListComments(
       body
       likes
       dislikes
+      created
+      modified
       post {
         id
         author
@@ -247,7 +253,7 @@ export const listComments = `query ListComments(
         slug
         likes
         dislikes
-        createdAt
+        created
         modified
         version
       }

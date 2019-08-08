@@ -1,7 +1,7 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/layout"
-import { withAuthenticator, Connect } from 'aws-amplify-react'
+import { withAuthenticator } from 'aws-amplify-react'
 
 class Dashboard extends React.Component {
   render() {

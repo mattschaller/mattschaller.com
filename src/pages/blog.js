@@ -5,8 +5,6 @@ import Layout from "../components/layout"
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
-    const posts = data.allMarkdownRemark.edges
-    const blogs = data.posts.listBlogs.items
     const articles = data.posts.listPosts.items
     console.log(this);
     return (
@@ -27,30 +25,12 @@ class BlogIndex extends React.Component {
                     <h3>
                       <Link to={items.slug}>{title}</Link>
                     </h3>
+                    <small>
+                      Created by {items.author} at {items.created}.  Last updated was at {items.updated}.  {items.likes} likes.  {items.dislikes} dislikes.
+                    </small>
                     <p
                       dangerouslySetInnerHTML={{
                         __html: items.body || items.excerpt,
-                      }}
-                    />
-                  </section>
-                </article>
-              )
-            })}
-            
-            <hr/>
-
-            {posts.map( ({ node }) => {
-              const title = node.frontmatter.title || node.fields.slug
-              return (
-                <article className="article content" key={node.fields.slug}>
-                  <section className="section">
-                    <h3>
-                      <Link to={`/blog/` + node.fields.slug}>{title}</Link>
-                    </h3>
-                    <small>{node.frontmatter.date}</small>
-                    <p
-                      dangerouslySetInnerHTML={{
-                        __html: node.frontmatter.description || node.excerpt,
                       }}
                     />
                   </section>
@@ -77,7 +57,9 @@ query {
     listBlogs {
       items {
         id
-        name
+        title
+        created
+        modified
         version
         posts {
           items {
@@ -122,22 +104,6 @@ query {
         }
       }
       nextToken
-    }
-  }
-  allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-    edges {
-      node {
-        id
-        excerpt
-        fields {
-          slug
-        }
-        frontmatter {
-          date(formatString: "MMMM DD, YYYY")
-          title
-          description
-        }
-      }
     }
   }
 }
