@@ -11,9 +11,10 @@ import Image from "gatsby-image"
 
 const Comment = ({ comment }) => {
 
-  console.log(data);
+  console.log(comment);
+  console.log(this);
 
-  const { id, author, body, likes, dislikes, post, version} = data.posts.getComment
+  const { id, author, body, likes, dislikes, post, version} = 1  //data.posts.getComment
 
   return (
     <article className="media" key={id}>
@@ -40,20 +41,20 @@ const Comment = ({ comment }) => {
 
 export default Comment
 
-const data = useStaticQuery(graphql`
-  query getComment($id: ID!) {
-    posts {
-      getComment(id: "1") {
-        id
-        author
-        body
-        likes
-        dislikes
-        post {
-          id
-        }
-        version
-      }
-    }
-  }
-  `)
+// const data = useStaticQuery(graphql`
+//   query getComment($id: ID!) {
+//     posts {
+//       getComment(id: "1") {
+//         id
+//         author
+//         body
+//         likes
+//         dislikes
+//         post {
+//           id
+//         }
+//         version
+//       }
+//     }
+//   }
+//   `)

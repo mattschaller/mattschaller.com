@@ -7,11 +7,9 @@ import Image from "gatsby-image"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    console.log(this);
     const post = this.props.data.posts.getPost || {}
     const comments = this.props.data.posts.getPost.comments.items || []
     const { previous, next } = this.props.pageContext
-    const portrait_thumbnail = "https://bulma.io/images/placeholders/128x128.png"
     return (
       <Layout
         location={this.props.location}
@@ -63,10 +61,12 @@ class BlogPostTemplate extends React.Component {
                 }
               )
             ) : (
-              <article class="media">
-                No comments
+              <article class="message">
+                <div class="message-body">
+                  No comments are available at this time.  You may add a comment for this article below.
+                </div>
               </article>
-            )};
+            )}
 
             <article class="media">
               <figure class="media-left">
