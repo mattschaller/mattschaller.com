@@ -2,26 +2,24 @@ import React from "react"
 import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
-import Comment from "../components/blog/comment"
-import Image from "gatsby-image"
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = this.props.data.posts.getPost || {}
-    const comments = this.props.data.posts.getPost.comments.items || []
+    const post = this.props.data.markdownRemark
     const { previous, next } = this.props.pageContext
+
     return (
       <Layout
         location={this.props.location}
-        title={post.title}
-        subtitle={post.excerpt}
-        description={post.body || post.excerpt}
+        title={post.frontmatter.title}
+        subtitle="Welcome to posttown"
+        description={post.frontmatter.description || post.excerpt}
         fullsize="false"
       >
         <article className="article">
           <section className="section content">
             <div className="container">
-              <div dangerouslySetInnerHTML={{ __html: post.body }} />
+              <div dangerouslySetInnerHTML={{ __html: post.html }} />
               <hr />
             </div>
             <div className="container">
@@ -34,7 +32,7 @@ class BlogPostTemplate extends React.Component {
                 {previous && (
                   <Link
                     className="pagination-previous"
-                    to={previous.fields.slug}
+                    to={`blog`+ previous.fields.slug}
                     rel="prev"
                   >
                     ← {previous.frontmatter.title}
@@ -43,7 +41,7 @@ class BlogPostTemplate extends React.Component {
                 {next && (
                   <Link
                     className="pagination-next"
-                    to={next.fields.slug}
+                    to={`blog`+ next.fields.slug}
                     rel="next"
                   >
                     {next.frontmatter.title} →
@@ -51,55 +49,8 @@ class BlogPostTemplate extends React.Component {
                 )}
               </nav>
             </div>
-
-            {comments.length ? (
-              comments.map(
-                (items) => {
-                  return (
-                    <Comment id={items.id} />
-                  )
-                }
-              )
-            ) : (
-              <article class="message">
-                <div class="message-body">
-                  No comments are available at this time.  You may add a comment for this article below.
-                </div>
-              </article>
-            )}
-
-            <article class="media">
-              <figure class="media-left">
-                <p class="image is-64x64">
-                  <Image fixed={this.props.data.portrait.childImageSharp.fixed} />
-                </p>
-              </figure>
-              <div class="media-content">
-                <div class="field">
-                  <p class="control">
-                    <textarea class="textarea" placeholder="Add a comment..."></textarea>
-                  </p>
-                </div>
-                <nav class="level">
-                  <div class="level-left">
-                    <div class="level-item">
-                      <a class="button is-info">Submit</a>
-                    </div>
-                  </div>
-                  <div class="level-right">
-                    <div class="level-item">
-                      <label class="checkbox">
-                        <input type="checkbox"/> Press enter to submit
-                      </label>
-                    </div>
-                  </div>
-                </nav>
-              </div>
-            </article>
-
           </section>
         </article>
-
       </Layout>
     )
   }
@@ -108,59 +59,22 @@ class BlogPostTemplate extends React.Component {
 export default BlogPostTemplate
 
 export const pageQuery = graphql`
-query getPost($id: ID!) { 
-  portrait: file(absolutePath: { regex: "/128x128.png/" }) {
-    childImageSharp {
-      fixed(width: 64, height: 64) {
-        ...GatsbyImageSharpFixed
-      }
-    }
-  }
-  posts {
-    getPost(id: $id) {
-      id
-      author
-      title
-      body
-      excerpt
-      slug
-      likes
-      dislikes
-      created
-      modified
-      blog {
-        id
+  query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
         title
-        body
-        created
-        modified
-        posts {
-          nextToken
-        }
-        version
+        author
       }
-      tags {
-        items {
-          id
-          value
-        }
-        nextToken
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
+      html
+      frontmatter {
+        title
+        date(formatString: "MMMM DD, YYYY")
+        description
       }
-      comments {
-        items {
-          id
-          author
-          body
-          likes
-          dislikes
-          created
-          modified
-          version
-        }
-        nextToken
-      }
-      version
     }
   }
-}
 `

@@ -107,13 +107,15 @@ class About extends React.Component {
               . This site uses <a href="//bulma.io">Bulma CSS</a>,{" "}
               <a href="//fontawesome.com">Font Awesome</a>, and{" "}
               <a href="//formspree.io">Formspree</a>. This site is hosted on{" "}
-              <a href="//aws.amazon.com/s3/">AWS Amplify</a>. Source
+              <a href="//aws.amazon.com/s3/">Amazon S3</a>, and currently
+              deployed using <a href="//travis-ci.com">Travis CI</a>. Source
               code can be found on{" "}
               <a href="//github.com/mattschaller/mattschaller.com">GitHub</a>.
-              <a href="https://console.aws.amazon.com/amplify/home#/deploy?repo=https://github.com/username/repository">
-              <img src="https://oneclick.amplifyapp.com/button.svg" alt="Deploy to Amplify Console"/>
-              </a>
             </p>
+            <img
+              src="https://travis-ci.org/mattschaller/mattschaller.com.svg?branch=master"
+              alt="travis"
+            />
           </div>
         </section>
       </Layout>

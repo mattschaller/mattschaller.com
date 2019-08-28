@@ -5,8 +5,7 @@ import Layout from "../components/layout"
 class BlogIndex extends React.Component {
   render() {
     const { data } = this.props
-    const articles = data.posts.listPosts.items
-    console.log(this);
+    const posts = data.allMarkdownRemark.edges
     return (
       <Layout
         location={this.props.location}
@@ -16,21 +15,18 @@ class BlogIndex extends React.Component {
       >
         <section className="section">
           <div className="container">
-            
-            {articles.map((items) => {
-              const title = items.title || items.id
+            {posts.map(({ node }) => {
+              const title = node.frontmatter.title || node.fields.slug
               return (
-                <article className="article content" key={items.id}>
+                <article className="article content" key={node.fields.slug}>
                   <section className="section">
                     <h3>
-                      <Link to={items.slug}>{title}</Link>
+                      <Link to={`/blog/` + node.fields.slug}>{title}</Link>
                     </h3>
-                    <small>
-                      Created by {items.author} at {items.created}.  Last updated was at {items.updated}.  {items.likes} likes.  {items.dislikes} dislikes.
-                    </small>
+                    <small>{node.frontmatter.date}</small>
                     <p
                       dangerouslySetInnerHTML={{
-                        __html: items.body || items.excerpt,
+                        __html: node.frontmatter.description || node.excerpt,
                       }}
                     />
                   </section>
@@ -47,64 +43,27 @@ class BlogIndex extends React.Component {
 export default BlogIndex
 
 export const pageQuery = graphql`
-query {
-  site {
-    siteMetadata {
-      title
-    }
-  }
-  posts {
-    listBlogs {
-      items {
-        id
+  query {
+    site {
+      siteMetadata {
         title
-        created
-        modified
-        version
-        posts {
-          items {
-            id
+      }
+    }
+    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+      edges {
+        node {
+          id
+          excerpt
+          fields {
+            slug
+          }
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+            description
           }
         }
       }
-      nextToken
-    }
-    listPosts {
-      items {
-        id
-        author
-        title
-        body
-        excerpt
-        slug
-        likes
-        dislikes
-        version
-        blog {
-          id
-        }
-        comments {
-          items {
-            id
-          }
-        }
-      }
-      nextToken
-    }
-    listComments {
-      items {
-        id
-        author
-        body
-        likes
-        dislikes
-        version
-        post {
-          id
-        }
-      }
-      nextToken
     }
   }
-}
 `
