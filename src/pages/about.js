@@ -19,14 +19,14 @@ class About extends React.Component {
               builder. I have overseen product development, ran large
               distributed engineering teams, and have significant experience
               surrounding ecommerce and software-as-a-service. I have worked on
-              dozens of large & high-end brand ecommerce
-              implementations, and successfully scaled an enterprise B2B
+              dozens of ecommerce
+              implementations for large retail brands, and successfully scaled an enterprise B2B
               ecommerce solution to over 100 million dollars per year in
               transactions.
             </p>
             <p>
               I am always looking to grow as an engineer and a leader, hear
-              about interesting projects, and meeting likeminded people. I am
+              about interesting projects, and meeting like-minded people. I am
               also actively hiring, so feel free to
               {" "}
               <Link to={`/contact`}>drop me a line</Link>.
