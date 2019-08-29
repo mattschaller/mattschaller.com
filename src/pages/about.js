@@ -27,7 +27,8 @@ class About extends React.Component {
             <p>
               I am always looking to grow as an engineer and a leader, hear
               about interesting projects, and meeting likeminded people. I am
-              also actively hiring, so feel free to{" "}
+              also actively hiring, so feel free to
+              {" "}
               <Link to={`/contact`}>drop me a line</Link>.
             </p>
             <p>
