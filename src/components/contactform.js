@@ -19,7 +19,7 @@ export default class Contact extends React.Component {
           method="POST"
           acceptCharset="utf-8"
           onSubmit={this.submitForm}
-          action="//formspree.io/xoqllvbe"
+          action="http//formspree.io/xoqllvbe"
           className=""
         >
           <input type="hidden" name="_next" value="//mattschaller.com" />
@@ -34,8 +34,8 @@ export default class Contact extends React.Component {
             <div className="field-body">
               <div className="field">
                 <div className="control">
-                    {status === "SUCCESS" && <div class="notification is-success is-light"><button class="delete"></button>Your email has been sent!</div>}
-                    {status === "ERROR" && <div class="notification is-danger is-light"><button class="delete"></button>An error has occured.  This error has been captured for review.  Please try again later.</div>}
+                    {status === "SUCCESS" && <div className="notification is-success is-light">Your email has been sent!</div>}
+                    {status === "ERROR" && <div className="notification is-danger is-light">An error has occured.  This error has been captured for review.  Please try again later.</div>}
                 </div>
               </div>
             </div>
