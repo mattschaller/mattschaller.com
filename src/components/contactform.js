@@ -1,12 +1,24 @@
-import React from "react"
+import React from "react";
 
-function Contact() {
-  return (
-    <section className="section">
+export default class Contact extends React.Component {
+  constructor(props) {
+    super(props);
+    this.submitForm = this.submitForm.bind(this);
+    this.resetForm = this.resetForm.bind(this);
+    this.state = {
+      status: ""
+    };
+  }
+
+  render() {
+    const { status } = this.state;
+    return (
+      <section className="section">
       <div className="container">
         <form
           method="POST"
           acceptCharset="utf-8"
+          onSubmit={this.submitForm}
           action="//formspree.io/xoqllvbe"
           className=""
         >
@@ -17,6 +29,17 @@ function Contact() {
             value="mattschaller.com:  Contact Form Submission"
           />
           <input type="text" name="_gotcha" className="is-hidden" />
+
+          <div className="field is-horizontal">
+            <div className="field-body">
+              <div className="field">
+                <div className="control">
+                    {status === "SUCCESS" && <div class="notification is-success is-light"><button class="delete"></button>Your email has been sent!</div>}
+                    {status === "ERROR" && <div class="notification is-danger is-light"><button class="delete"></button>An error has occured.  This error has been captured for review.  Please try again later.</div>}
+                </div>
+              </div>
+            </div>
+          </div>
 
           <div className="field is-horizontal">
             <div className="field-body">
@@ -120,7 +143,7 @@ function Contact() {
                   </button>
                 </div>
                 <div className="control">
-                  <button className="button is-white is-large" type="reset">
+                  <button className="button is-white is-large" type="reset" onClick={this.resetForm}>
                     <span>Reset</span>
                   </button>
                 </div>
@@ -130,7 +153,29 @@ function Contact() {
         </form>
       </div>
     </section>
-  )
-}
+    );
+  }
 
-export default Contact
+  resetForm(ev) {
+    this.setState({ status: "" });
+  }
+
+  submitForm(ev) {
+    ev.preventDefault();
+    const form = ev.target;
+    const data = new FormData(form);
+    const xhr = new XMLHttpRequest();
+    xhr.open(form.method, form.action);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = () => {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        form.reset();
+        this.setState({ status: "SUCCESS" });
+      } else {
+        this.setState({ status: "ERROR" });
+      }
+    };
+    xhr.send(data);
+  }
+}
