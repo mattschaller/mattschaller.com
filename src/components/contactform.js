@@ -7,7 +7,7 @@ function Contact() {
         <form
           method="POST"
           acceptCharset="utf-8"
-          action="//formspree.io/mschaller3@gmail.com"
+          action="//formspree.io/xoqllvbe"
           className=""
         >
           <input type="hidden" name="_next" value="//mattschaller.com" />
