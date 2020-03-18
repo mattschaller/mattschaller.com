@@ -14,8 +14,8 @@ script:
   - npm run build
 deploy:
   provider: s3
-  access_key_id: $AWS_KEY
-  secret_access_key: $AWS_SECRET
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
   bucket: $BUCKET
   skip_cleanup: true
   local_dir: public
@@ -26,7 +26,7 @@ branches:
   only:
     - master
 before_deploy:
-  - aws s3 rm s3://$BUCKET --recursive --region=$REGION
+  - aws s3 rm s3://$BUCKET --recursive --region=$AWS_DEFAULT_REGION
 after_deploy:
   - aws configure set preview.cloudfront true
   - test $TRAVIS_BRANCH = "master" && aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
