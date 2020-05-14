@@ -6,7 +6,7 @@ module.exports = {
     language: `en`,
     siteUrl: `https://www.mattschaller.com/`,
     social: {
-      twitter: `mattschaller`,
+      twitter: `_mattschaller`,
     },
   },
   plugins: [

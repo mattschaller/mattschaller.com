@@ -26,8 +26,7 @@ class About extends React.Component {
             </p>
             <p>
               I am always looking to grow as an engineer and a leader, hear
-              about interesting projects, and meeting like-minded people. I am
-              also actively hiring, so feel free to
+              about interesting projects and opportunities, and meeting like-minded people. Feel free to
               {" "}
               <Link to={`/contact`}>drop me a line</Link>.
             </p>
@@ -41,10 +40,9 @@ class About extends React.Component {
             <h3>Highlights</h3>
             <ul>
               <li>
-                Currently Director of Development at{" "}
+                Previously Director of Development at{" "}
                 <a href="//multiplica.com">multiplica.us</a>. Responsible for
-                all client development, as well as an international team of 12
-                to 15 earthlings.
+                all client development, as well as an international team of 10 earthlings.
               </li>
               <li>
                 Previously Development Manager for ecommerce at{" "}
