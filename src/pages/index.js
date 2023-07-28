@@ -70,19 +70,15 @@ class Index extends React.Component {
 
             <h3>Technical stuff</h3>
             <div className="tags">
+              <span className="tag">Typescript</span>
               <span className="tag">Javascript</span>
-              <span className="tag">NodeJS</span>
-              <span className="tag">ReactJS</span>
-              <span className="tag">AngularJS</span>
-              <span className="tag">gulp</span>
-              <span className="tag">grunt</span>
-              <span className="tag">webpack</span>
+              <span className="tag">Node.js</span>
+              <span className="tag">React</span>
+              <span className="tag">React Native</span>
+              <span className="tag">react-native-web</span>
               <span className="tag">PHP</span>
-              <span className="tag">Zend</span>
-              <span className="tag">Laravel</span>
               <span className="tag">Python</span>
-              <span className="tag">Django</span>
-              <span className="tag">Flask</span>
+              <span className="tag">Matplotlib</span>
               <span className="tag">MySQL</span>
               <span className="tag">MongoDB</span>
               <span className="tag">Apache</span>
@@ -94,7 +90,6 @@ class Index extends React.Component {
               <span className="tag">Microsoft Azure</span>
               <span className="tag">Google Analytics</span>
               <span className="tag">New Relic</span>
-              <span className="tag">Kibana</span>
               <span className="tag">Agile</span>
               <span className="tag">Atlassian</span>
             </div>
@@ -113,7 +108,7 @@ class Index extends React.Component {
               . This site uses <a href="//bulma.io">Bulma CSS</a>, and{" "}
               <a href="//fontawesome.com">Font Awesome</a>. This site is hosted on{" "}
               <a href="//aws.amazon.com/s3/">Amazon S3</a>, and currently
-              deployed using <a href="//travis-ci.com">Github Actions</a>. Source
+              deployed using <a href="//https://github.com/features/actions">Github Actions</a>. Source
               code can be found on{" "}
               <a href="//github.com/mattschaller/mattschaller.com">GitHub</a>.
             </p>
