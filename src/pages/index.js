@@ -113,13 +113,13 @@ class Index extends React.Component {
               . This site uses <a href="//bulma.io">Bulma CSS</a>, and{" "}
               <a href="//fontawesome.com">Font Awesome</a>. This site is hosted on{" "}
               <a href="//aws.amazon.com/s3/">Amazon S3</a>, and currently
-              deployed using <a href="//travis-ci.com">Travis CI</a>. Source
+              deployed using <a href="//travis-ci.com">Github Actions</a>. Source
               code can be found on{" "}
               <a href="//github.com/mattschaller/mattschaller.com">GitHub</a>.
             </p>
             <img
-              src="https://travis-ci.org/mattschaller/mattschaller.com.svg?branch=master"
-              alt="travis"
+              src="https://github.com/mattschaller/mattschaller.com/actions/workflows/deploy_gatsby_to_s3.yml/badge.svg"
+              alt="github actions"
             />
           </div>
         </section>
