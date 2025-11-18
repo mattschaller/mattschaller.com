@@ -177,11 +177,11 @@ export default function GitHubPortfolio() {
 
                 <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4 mb-6 font-mono text-sm">
                   <div className="text-[#8b949e]">
-                    <span className="text-[#6e7681]">/* </span><br/>
-                    <span className="text-[#6e7681]"> * After 10 years, I've learned that the best solutions</span><br/>
-                    <span className="text-[#6e7681]"> * are the ones you can explain to your team at 9am</span><br/>
-                    <span className="text-[#6e7681]"> * and to your CEO at 9pm.</span><br/>
-                    <span className="text-[#6e7681]"> */</span>
+                    <span className="text-[#6e7681]">{`/* `}</span><br/>
+                    <span className="text-[#6e7681]">{` * After 10 years, I've learned that the best solutions`}</span><br/>
+                    <span className="text-[#6e7681]">{` * are the ones you can explain to your team at 9am`}</span><br/>
+                    <span className="text-[#6e7681]">{` * and to your CEO at 9pm.`}</span><br/>
+                    <span className="text-[#6e7681]">{` */`}</span>
                   </div>
                 </div>
 
