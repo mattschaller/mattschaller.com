@@ -175,9 +175,15 @@ export default function GitHubPortfolio() {
                   </p>
                 </div>
 
-                <blockquote className="border-l-4 border-[#3d444d] pl-4 text-[#8b949e] italic mb-6">
-                  "The best way to predict the future is to build it."
-                </blockquote>
+                <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4 mb-6 font-mono text-sm">
+                  <div className="text-[#8b949e]">
+                    <span className="text-[#6e7681]">/* </span><br/>
+                    <span className="text-[#6e7681]"> * After 10 years, I've learned that the best solutions</span><br/>
+                    <span className="text-[#6e7681]"> * are the ones you can explain to your team at 9am</span><br/>
+                    <span className="text-[#6e7681]"> * and to your CEO at 9pm.</span><br/>
+                    <span className="text-[#6e7681]"> */</span>
+                  </div>
+                </div>
 
                 <div className="flex gap-2 mt-6">
                   <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">leadership</span>
