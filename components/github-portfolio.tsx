@@ -176,7 +176,7 @@ export default function GitHubPortfolio() {
                 </div>
 
                 <blockquote className="border-l-4 border-[#3d444d] pl-4 text-[#8b949e] italic mb-6">
-                  &quot;The best way to predict the future is to build it.&quot;
+                  "The best way to predict the future is to build it."
                 </blockquote>
 
                 <div className="flex gap-2 mt-6">
