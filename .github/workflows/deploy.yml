@@ -25,9 +25,6 @@ jobs:
       - name: Build
         run: npm run build
       
-      - name: Export static site
-        run: npm run export
-      
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -37,9 +34,13 @@ jobs:
       
       - name: Deploy to S3
         run: |
-          aws s3 sync out/ s3://${{ secrets.S3_BUCKET }} --delete --cache-control "public, max-age=31536000, immutable"
-          aws s3 cp s3://${{ secrets.S3_BUCKET }}/index.html s3://${{ secrets.S3_BUCKET }}/index.html --metadata-directive REPLACE --cache-control "public, max-age=0, must-revalidate" --content-type "text/html"
-          aws s3 cp s3://${{ secrets.S3_BUCKET }}/404.html s3://${{ secrets.S3_BUCKET }}/404.html --metadata-directive REPLACE --cache-control "public, max-age=0, must-revalidate" --content-type "text/html"
+          # Sync all files except HTML with long cache policy
+          aws s3 sync out/ s3://${{ secrets.S3_BUCKET }} --delete --cache-control "public, max-age=31536000, immutable" --exclude "*.html"
+          # Upload all HTML files with short cache policy
+          for file in out/*.html; do
+            [ -e "$file" ] || continue
+            aws s3 cp "$file" "s3://${{ secrets.S3_BUCKET }}/$(basename "$file")" --cache-control "public, max-age=0, must-revalidate" --content-type "text/html";
+          done
       
       - name: Invalidate CloudFront
         run: |

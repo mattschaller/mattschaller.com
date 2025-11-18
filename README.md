@@ -93,10 +93,8 @@ aws cloudfront create-invalidation --distribution-id YOUR_ID --paths "/*"
 - ✅ Static site generation for optimal performance
 - ✅ TypeScript for type safety
 - ✅ Tailwind CSS for styling
-- ✅ Markdown blog with syntax highlighting
 - ✅ SEO optimized (metadata, sitemap, robots.txt)
 - ✅ Google Analytics integration
-- ✅ Contact form with validation
 - ✅ Responsive design
 - ✅ Dark mode support
 

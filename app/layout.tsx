@@ -23,7 +23,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary',
-    creator: '@_mattschaller',
+    creator: '@mattschaller',
   },
   robots: {
     index: true,
