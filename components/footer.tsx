@@ -27,7 +27,7 @@ export default function Footer({ onToggleTheme }: FooterProps) {
         </a>
       </nav>
       <p>Built with intention. No frameworks harmed in the making of this site.</p>
-      <p className="mt-2 opacity-50 text-[11px]">
+      <p className="mt-2 opacity-50 text-[12px]">
         Best viewed in Netscape Navigator 4.0 or higher
       </p>
     </footer>
