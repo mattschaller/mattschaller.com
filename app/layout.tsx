@@ -76,7 +76,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} ${ibmPlexMono.variable}`}>
       <head>
-        {/* Prevent theme flash by applying theme before render */}
+        {/* Prevent theme flash by applying theme before render 
+            Note: This inline script will require 'unsafe-inline' in CSP script-src
+            or must be moved to an external file. This is a trade-off between
+            theme flash prevention and strict CSP. See cloudfront-configuration.md */}
         <script
           dangerouslySetInnerHTML={{
             __html: `

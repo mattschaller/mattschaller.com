@@ -36,6 +36,7 @@ This document outlines the required CloudFront configuration to implement best-i
      ```
    - Override response: ☑ Yes
    - **Note on GTM Compatibility**: This CSP policy intentionally omits `'unsafe-inline'` and `'unsafe-eval'` from `script-src` and should be treated as the recommended baseline for production. Google Tag Manager is loaded via an external script from `https://www.googletagmanager.com`, which is explicitly allowed, and **must be tested in a staging environment with this CSP before going live**. If specific GTM features fail under this policy, first prefer refactoring your GTM container to avoid inline scripts. While a nonce-based CSP is generally the more secure alternative, it is not practical with this site's static export architecture; only if GTM functionality is business-critical and cannot be adapted should you explicitly choose to relax the policy (for example, by adding `'unsafe-inline'` to `script-src`), understanding and documenting that this reduces XSS protection.
+   - **Note on Theme Script**: The site includes an inline script in `app/layout.tsx` to prevent theme flash on page load. This script will be blocked by the CSP shown above. To enable it, you must either: (1) add `'unsafe-inline'` to `script-src` (reduces security), (2) move the theme script to an external file served from `'self'`, or (3) accept the theme flash as a trade-off for stronger CSP.
 
 2. **Permissions-Policy**
    - Header name: `Permissions-Policy`
