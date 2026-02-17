@@ -6,7 +6,7 @@ export default function Footer({ onToggleTheme }: FooterProps) {
   return (
     <footer className="pt-12 pb-8 border-t border-border-color font-mono text-xs text-text-dim text-center">
       <nav className="flex justify-center gap-4 mb-4" aria-label="Footer navigation">
-        <a href="/humans.txt" className="hover:text-accent-blue transition-colors" aria-label="View humans.txt file">
+        <a href="/humans.txt" className="hover:text-accent-blue transition-colors">
           humans.txt
         </a>
         <button
@@ -21,7 +21,7 @@ export default function Footer({ onToggleTheme }: FooterProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-accent-blue transition-colors"
-          aria-label="View source code on GitHub"
+          aria-label="View source code on GitHub (opens in new tab)"
         >
           view source
         </a>
