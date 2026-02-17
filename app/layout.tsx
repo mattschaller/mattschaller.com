@@ -42,16 +42,31 @@ export const metadata: Metadata = {
 }
 
 // Validate and sanitize GTM ID
-const validateGTMId = (id: string): string => {
+const validateGTMId = (id: string | undefined): string => {
   const GTM_ID_PATTERN = /^GTM-[A-Z0-9]+$/
-  if (!GTM_ID_PATTERN.test(id)) {
-    console.error(`Invalid GTM ID format: ${id}`)
-    return 'GTM-5B2WMN' // fallback to known valid ID
+
+  if (!id) {
+    const message = 'Missing NEXT_PUBLIC_GTM_ID environment variable.'
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error(message)
+    }
+    console.error(message)
+    return 'GTM-5B2WMN' // fallback to known valid ID in non-production
   }
+
+  if (!GTM_ID_PATTERN.test(id)) {
+    const message = `Invalid GTM ID format: ${id}`
+    if (process.env.NODE_ENV === 'production') {
+      throw new Error(message)
+    }
+    console.error(message)
+    return 'GTM-5B2WMN' // fallback to known valid ID in non-production
+  }
+
   return id
 }
 
-const GTM_ID = validateGTMId(process.env.NEXT_PUBLIC_GTM_ID || 'GTM-5B2WMN')
+const GTM_ID = validateGTMId(process.env.NEXT_PUBLIC_GTM_ID)
 
 export default function RootLayout({
   children,
@@ -61,6 +76,26 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} ${ibmPlexMono.variable}`}>
       <head>
+        {/* Prevent theme flash by applying theme before render 
+            Note: This inline script will require 'unsafe-inline' in CSP script-src
+            or must be moved to an external file. This is a trade-off between
+            theme flash prevention and strict CSP. See cloudfront-configuration.md */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  const theme = localStorage.getItem('theme');
+                  if (theme === 'light') {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                  } else if (!theme && window.matchMedia('(prefers-color-scheme: light)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                  }
+                } catch (e) {}
+              })();
+            `,
+          }}
+        />
         <Script id="google-tag-manager" strategy="afterInteractive">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

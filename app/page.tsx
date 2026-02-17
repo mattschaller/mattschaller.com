@@ -69,7 +69,11 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={<div className="max-w-content mx-auto px-6 sm:px-10 py-20">Loading...</div>}>
+    <Suspense fallback={
+      <div className="max-w-content mx-auto px-6 sm:px-10 py-20">
+        <div className="text-text-secondary">Loading...</div>
+      </div>
+    }>
       <HomeContent />
     </Suspense>
   )
