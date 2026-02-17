@@ -7,6 +7,14 @@ const nextConfig = {
   },
   trailingSlash: true,
   async headers() {
+    // Note: These headers will NOT work with "output: export" in production.
+    // They are defined here for local development/testing only.
+    // In production, security headers are applied via CloudFront.
+    // See docs/security/cloudfront-configuration.md for production setup.
+    
+    // Use relaxed CSP in development, strict CSP in production (via CloudFront)
+    const isDev = process.env.NODE_ENV === 'development'
+    
     return [
       {
         source: '/:path*',
@@ -15,11 +23,13 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com",
+              isDev 
+                ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com"
+                : "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https:",
               "font-src 'self' data:",
-              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com",
               "frame-ancestors 'none'",
               "base-uri 'self'",
               "form-action 'self'",

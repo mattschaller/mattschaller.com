@@ -11,7 +11,20 @@ import Contact from '@/components/contact'
 import Footer from '@/components/footer'
 
 function HomeContent() {
-  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
+    // Initialize theme from localStorage or system preference
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
+      if (savedTheme) {
+        return savedTheme
+      }
+      // Check system preference
+      if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        return 'light'
+      }
+    }
+    return 'dark'
+  })
   const searchParams = useSearchParams()
 
   const toggleTheme = useCallback(() => {
@@ -23,6 +36,8 @@ function HomeContent() {
       'data-theme',
       theme === 'light' ? 'light' : ''
     )
+    // Save theme to localStorage
+    localStorage.setItem('theme', theme)
   }, [theme])
 
   useEffect(() => {
@@ -38,7 +53,7 @@ function HomeContent() {
 
   useEffect(() => {
     if (searchParams.get('legacy') === 'true') {
-      alert('\uD83C\uDFAE Legacy mode detected! (This is where the terminal or mIRC version would load)')
+      console.log('🎮 Legacy mode detected! (This is where the terminal or mIRC version would load)')
     }
   }, [searchParams])
 
@@ -57,7 +72,7 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense>
+    <Suspense fallback={<div className="max-w-content mx-auto px-6 sm:px-10 py-20">Loading...</div>}>
       <HomeContent />
     </Suspense>
   )

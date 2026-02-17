@@ -41,6 +41,18 @@ export const metadata: Metadata = {
   },
 }
 
+// Validate and sanitize GTM ID
+const validateGTMId = (id: string): string => {
+  const GTM_ID_PATTERN = /^GTM-[A-Z0-9]+$/
+  if (!GTM_ID_PATTERN.test(id)) {
+    console.error(`Invalid GTM ID format: ${id}`)
+    return 'GTM-5B2WMN' // fallback to known valid ID
+  }
+  return id
+}
+
+const GTM_ID = validateGTMId(process.env.NEXT_PUBLIC_GTM_ID || 'GTM-5B2WMN')
+
 export default function RootLayout({
   children,
 }: {
@@ -55,13 +67,13 @@ export default function RootLayout({
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
             j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer','GTM-5B2WMN');
+            })(window,document,'script','dataLayer','${GTM_ID}');
           `}
         </Script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-/*
+      </head>
+      <body className="font-sans">
+        {/* ASCII art Easter egg comment */}
+        {/* 
 ╔═══════════════════════════════════════════════════════════════╗
 ║                                                               ║
 ║   Hey there. If you're reading this, you're probably the      ║
@@ -81,15 +93,10 @@ export default function RootLayout({
 ║   - Matt                                                      ║
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
-*/
-`,
-          }}
-        />
-      </head>
-      <body className="font-sans">
+        */}
         <noscript>
           <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5B2WMN"
+            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
             height="0"
             width="0"
             style={{ display: 'none', visibility: 'hidden' }}
