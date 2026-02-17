@@ -107,9 +107,9 @@ export default function Experience() {
         Experience
       </h2>
       <div>
-        {positions.map((pos, i) => (
+        {positions.map((pos) => (
           <div
-            key={i}
+            key={`${pos.company}-${pos.title}-${pos.date}`}
             className="mb-10 last:mb-0 pl-6 border-l-2 border-border-accent relative"
           >
             <div className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-accent-blue" />
