@@ -85,7 +85,7 @@ export default function RootLayout({
             __html: `
               (function() {
                 try {
-                  var theme = localStorage.getItem('theme');
+                  const theme = localStorage.getItem('theme');
                   if (theme === 'light') {
                     document.documentElement.setAttribute('data-theme', 'light');
                   } else if (!theme && window.matchMedia('(prefers-color-scheme: light)').matches) {
