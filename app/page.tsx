@@ -11,21 +11,18 @@ import Contact from '@/components/contact'
 import Footer from '@/components/footer'
 
 function HomeContent() {
-  const [theme, setTheme] = useState<'dark' | 'light'>(() => {
-    // Initialize theme from localStorage or system preference
-    if (typeof window !== 'undefined') {
-      const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
-      if (savedTheme) {
-        return savedTheme
-      }
-      // Check system preference
-      if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-        return 'light'
-      }
-    }
-    return 'dark'
-  })
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark')
   const searchParams = useSearchParams()
+
+  // Initialize theme from localStorage or system preference after mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
+    if (savedTheme) {
+      setTheme(savedTheme)
+    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+      setTheme('light')
+    }
+  }, [])
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
