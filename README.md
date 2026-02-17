@@ -150,7 +150,7 @@ npm audit fix
 - Tailwind CSS with custom color tokens
 - SEO optimized (metadata, sitemap, robots.txt)
 - Google Tag Manager (GTM) with GA4 integration
-- Security headers via CloudFront
+- Security headers via CloudFront (⏳ pending implementation - see [CloudFront configuration guide](docs/security/cloudfront-configuration.md))
 - Responsive design
 - Easter eggs (view source, keyboard shortcuts, URL params, humans.txt)
 
