@@ -114,7 +114,7 @@ export default function GitHubPortfolio() {
                   </div>
                   <div className="flex-1">
                     <h1 className="text-3xl font-bold text-[#c9d1d9] mb-2 mt-0">Matt Schaller</h1>
-                    <p className="text-xl text-[#8b949e] mb-3">VP of Software Engineering</p>
+                    <p className="text-xl text-[#8b949e] mb-3">VP, Software Development</p>
                     <div className="flex gap-3">
                       <a href="https://www.linkedin.com/in/mattschaller" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-[#58a6ff] hover:underline text-sm">
                         <Linkedin className="w-4 h-4" />
@@ -132,10 +132,17 @@ export default function GitHubPortfolio() {
                   <span className="text-[#f78166]">#</span> About
                 </h2>
                 <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4 mb-6">
+                  <p className="text-[#c9d1d9] leading-relaxed mb-3">
+                    Software engineering leader with <strong>15+ years</strong> of experience building AI-powered
+                    systems, scaling distributed teams, and driving technical strategy. Currently
+                    managing a <strong>20-person engineering organization ($XM P&L)</strong> with hands-on experience
+                    implementing production LLM systems using AWS Bedrock, pgvector RAG architectures,
+                    and modern AI tooling.
+                  </p>
                   <p className="text-[#c9d1d9] leading-relaxed mb-0">
-                    Software engineering leader with <strong>10+ years</strong> of experience building and scaling 
-                    distributed engineering teams. Specialized in ecommerce platforms, SaaS solutions, and high-performance 
-                    systems that handle <strong>$100M+ in annual transactions</strong>.
+                    Specialized in platform engineering, enterprise SaaS at scale, and infrastructure
+                    modernization. Recent focus: M&A technical due diligence, SOC2 compliance
+                    initiatives, and cross-platform mobile development supporting thousands of users.
                   </p>
                 </div>
 
@@ -144,22 +151,22 @@ export default function GitHubPortfolio() {
                 </h2>
                 <div className="grid grid-cols-2 gap-4 mb-6">
                   <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4">
-                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Engineering Leadership</span>
+                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">AI/ML Systems Architecture</span>
                   </div>
                   <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4">
-                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Product Development</span>
+                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Engineering Leadership (20-person org)</span>
                   </div>
                   <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4">
-                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Distributed Systems</span>
+                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Platform Engineering</span>
                   </div>
                   <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4">
                     <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Enterprise B2B SaaS</span>
                   </div>
                   <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4">
-                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Ecommerce at Scale</span>
+                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">M&A Technical Due Diligence</span>
                   </div>
                   <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4">
-                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Team Building</span>
+                    <code className="text-[#79c0ff] text-sm">→</code> <span className="text-[#c9d1d9]">Infrastructure Modernization</span>
                   </div>
                 </div>
 
@@ -168,28 +175,28 @@ export default function GitHubPortfolio() {
                 </h2>
                 <div className="bg-[#1f6feb]/10 border border-[#1f6feb] rounded-md p-4 mb-6">
                   <p className="text-[#c9d1d9] mb-2">
-                    💡 Open to interesting opportunities, challenging projects, and connecting with like-minded technologists
+                    💡 Open to VP/Director roles at companies building real AI/LLM products—where engineering leaders are expected to architect systems, not just manage teams.
                   </p>
                   <p className="text-[#8b949e] text-sm mb-0">
-                    Always learning, always building, always growing as an engineer and leader
+                    Always learning, always building, always shipping.
                   </p>
                 </div>
 
                 <div className="bg-[#161b22] border border-[#30363d] rounded-md p-4 mb-6 font-mono text-sm">
                   <div className="text-[#8b949e]">
-                    <span className="text-[#6e7681]">{`/* `}</span><br/>
-                    <span className="text-[#6e7681]">{` * After 10 years, I've learned that the best solutions`}</span><br/>
-                    <span className="text-[#6e7681]">{` * are the ones you can explain to your team at 9am`}</span><br/>
-                    <span className="text-[#6e7681]">{` * and to your CEO at 9pm.`}</span><br/>
+                    <span className="text-[#6e7681]">{`/**`}</span><br/>
+                    <span className="text-[#6e7681]">{` * After 15 years, I've learned that the best engineering leaders`}</span><br/>
+                    <span className="text-[#6e7681]">{` * are the ones who can architect a RAG pipeline at 9am`}</span><br/>
+                    <span className="text-[#6e7681]">{` * and explain the business case to the board at 3pm.`}</span><br/>
                     <span className="text-[#6e7681]">{` */`}</span>
                   </div>
                 </div>
 
                 <div className="flex gap-2 mt-6">
+                  <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">ai-ml</span>
                   <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">leadership</span>
-                  <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">ecommerce</span>
-                  <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">saas</span>
-                  <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">distributed-systems</span>
+                  <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">platform-engineering</span>
+                  <span className="px-2 py-1 bg-[#1f6feb]/20 text-[#58a6ff] rounded text-xs border border-[#1f6feb]/30">enterprise-saas</span>
                 </div>
               </div>
             )}
