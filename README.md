@@ -16,7 +16,7 @@ Personal portfolio website. Clean, modern, scrollable single-page design with su
 
 ### Prerequisites
 
-- Node.js 20+
+- Node.js >= 20.9.0
 - npm
 
 ### Installation
