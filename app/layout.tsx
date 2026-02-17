@@ -41,7 +41,17 @@ export const metadata: Metadata = {
   },
 }
 
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || 'GTM-5B2WMN'
+// Validate and sanitize GTM ID
+const validateGTMId = (id: string): string => {
+  const GTM_ID_PATTERN = /^GTM-[A-Z0-9]+$/
+  if (!GTM_ID_PATTERN.test(id)) {
+    console.error(`Invalid GTM ID format: ${id}`)
+    return 'GTM-5B2WMN' // fallback to known valid ID
+  }
+  return id
+}
+
+const GTM_ID = validateGTMId(process.env.NEXT_PUBLIC_GTM_ID || 'GTM-5B2WMN')
 
 export default function RootLayout({
   children,

@@ -35,6 +35,7 @@ This document outlines the required CloudFront configuration to implement best-i
      default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
      ```
    - Override response: ☑ Yes
+   - **Note on GTM Compatibility**: This CSP policy removes `'unsafe-inline'` and `'unsafe-eval'` from script-src for better security. Google Tag Manager is loaded via an external script from `https://www.googletagmanager.com` which is explicitly allowed. If you encounter issues with GTM functionality, you may need to implement a nonce-based CSP approach or temporarily add `'unsafe-inline'` back to script-src, though this reduces XSS protection.
 
 2. **Permissions-Policy**
    - Header name: `Permissions-Policy`
