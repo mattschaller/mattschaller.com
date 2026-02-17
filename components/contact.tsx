@@ -16,6 +16,7 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-3 bg-bg-secondary border border-border-accent rounded-md text-text-primary text-sm font-medium hover:bg-bg-tertiary hover:border-accent-blue hover:-translate-y-px transition-all"
+          aria-label="Connect on LinkedIn (opens in new tab)"
         >
           LinkedIn
         </a>
@@ -24,6 +25,7 @@ export default function Contact() {
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-5 py-3 bg-bg-secondary border border-border-accent rounded-md text-text-primary text-sm font-medium hover:bg-bg-tertiary hover:border-accent-blue hover:-translate-y-px transition-all"
+          aria-label="View GitHub profile (opens in new tab)"
         >
           GitHub
         </a>
