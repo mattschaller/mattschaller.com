@@ -12,6 +12,7 @@ import Footer from '@/components/footer'
 
 function HomeContent() {
   const [theme, setTheme] = useState<'dark' | 'light'>('dark')
+  const [isInitialized, setIsInitialized] = useState(false)
   const searchParams = useSearchParams()
 
   // Initialize theme from localStorage or system preference after mount
@@ -22,20 +23,23 @@ function HomeContent() {
     } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
       setTheme('light')
     }
+    setIsInitialized(true)
   }, [])
 
   const toggleTheme = useCallback(() => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'))
   }, [])
 
+  // Only persist theme changes after initialization to avoid race condition
   useEffect(() => {
+    if (!isInitialized) return
+
     document.documentElement.setAttribute(
       'data-theme',
       theme === 'light' ? 'light' : ''
     )
-    // Save theme to localStorage
     localStorage.setItem('theme', theme)
-  }, [theme])
+  }, [theme, isInitialized])
 
   useEffect(() => {
     function handleKeyDown(e: KeyboardEvent) {

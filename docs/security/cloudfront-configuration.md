@@ -35,16 +35,32 @@ This document outlines the required CloudFront configuration to implement best-i
      default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
      ```
    - Override response: ☑ Yes
-   - **Note on GTM Compatibility**: This CSP policy intentionally omits `'unsafe-inline'` and `'unsafe-eval'` from `script-src` and should be treated as the recommended baseline for production. Key considerations:
-     - Google Tag Manager is loaded via an external script from `https://www.googletagmanager.com`, which is explicitly allowed
-     - **Must be tested in a staging environment with this CSP before going live**
-     - If specific GTM features fail under this policy, first prefer refactoring your GTM container to avoid inline scripts
-     - While nonce-based CSP is generally the more secure alternative, it is not practical with this site's static export architecture
-     - Only if GTM functionality is business-critical and cannot be adapted should you explicitly choose to relax the policy (for example, by adding `'unsafe-inline'` to `script-src`), understanding and documenting that this reduces XSS protection
-   - **Note on Theme Script**: The site includes an inline script in `app/layout.tsx` to prevent theme flash on page load. This script will be blocked by the CSP shown above. To enable it, you must either:
-     1. Add `'unsafe-inline'` to `script-src` (reduces security)
-     2. Move the theme script to an external file served from `'self'`
-     3. Accept the theme flash as a trade-off for stronger CSP
+   - **Note on Inline Scripts Conflict**: This strict CSP policy intentionally omits `'unsafe-inline'` and `'unsafe-eval'` from `script-src` and should be treated as the security baseline for production. However, **the current site implementation includes inline scripts that will be blocked** by this policy:
+     1. **GTM Bootstrap Script** (`app/layout.tsx`): The standard GTM snippet includes an inline bootstrap script that initializes the data layer and loads the external GTM library
+     2. **Theme Flash Prevention Script** (`app/layout.tsx`): An inline script that reads localStorage and sets the theme before React hydrates to prevent a flash of wrong theme
+     
+     **To implement this CSP in production, you must choose one of the following approaches:**
+     
+     **Option A - Externalize Scripts (Recommended for Security)**:
+     - Move both the GTM bootstrap and theme script to external JavaScript files served from `'self'` (e.g., `/gtm-bootstrap.js`, `/theme-init.js`)
+     - Include them with `<script src="/gtm-bootstrap.js">` tags or Next.js `<Script>` component
+     - This maintains the strict CSP without `'unsafe-inline'`
+     
+     **Option B - Use Nonce-Based CSP**:
+     - Generate a unique nonce on each request and add it to both the CSP header and the inline script tags
+     - This approach provides strong XSS protection while allowing specific inline scripts
+     - Not practical with this site's static export architecture (requires server-side rendering)
+     
+     **Option C - Relax CSP with 'unsafe-inline'**:
+     - Add `'unsafe-inline'` to the `script-src` directive: `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com`
+     - This allows the site to work as currently implemented but materially reduces XSS protection
+     - If you choose this option, explicitly document the security trade-off and ensure all other security controls are in place
+     
+     **Option D - Accept Functional Limitations**:
+     - Keep the strict CSP as documented, which will block the inline scripts
+     - GTM will not load (analytics will not function)
+     - Users will see a brief theme flash on page load
+     - Only viable if analytics are not required and UX impact is acceptable
 
 2. **Permissions-Policy**
    - Header name: `Permissions-Policy`
