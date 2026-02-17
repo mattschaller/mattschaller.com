@@ -5,13 +5,14 @@ interface FooterProps {
 export default function Footer({ onToggleTheme }: FooterProps) {
   return (
     <footer className="pt-12 pb-8 border-t border-border-color font-mono text-xs text-text-dim text-center">
-      <div className="flex justify-center gap-4 mb-4">
-        <a href="/humans.txt" className="hover:text-accent-blue transition-colors">
+      <nav className="flex justify-center gap-4 mb-4" aria-label="Footer navigation">
+        <a href="/humans.txt" className="hover:text-accent-blue transition-colors" aria-label="View humans.txt file">
           humans.txt
         </a>
         <button
           onClick={onToggleTheme}
           className="hover:text-accent-blue transition-colors"
+          aria-label="Toggle between light and dark theme"
         >
           toggle theme
         </button>
@@ -20,10 +21,11 @@ export default function Footer({ onToggleTheme }: FooterProps) {
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-accent-blue transition-colors"
+          aria-label="View source code on GitHub"
         >
           view source
         </a>
-      </div>
+      </nav>
       <p>Built with intention. No frameworks harmed in the making of this site.</p>
       <p className="mt-2 opacity-50 text-[11px]">
         Best viewed in Netscape Navigator 4.0 or higher

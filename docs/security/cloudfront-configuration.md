@@ -32,7 +32,7 @@ This document outlines the required CloudFront configuration to implement best-i
    - Header name: `Content-Security-Policy`
    - Value:
      ```
-     default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
+     default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
      ```
    - Override response: ☑ Yes
 

@@ -32,6 +32,12 @@
   --text-secondary: #656d76;
   --text-dim: #8b949e;
 
+  --accent-green: #1a7f37;
+  --accent-blue: #0969da;
+  --accent-yellow: #9a6700;
+  --accent-purple: #8250df;
+  --accent-cyan: #1b7c83;
+
   --border-color: #d0d7de;
   --border-accent: #d8dee4;
 }
