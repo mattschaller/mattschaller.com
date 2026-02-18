@@ -35,32 +35,12 @@ This document outlines the required CloudFront configuration to implement best-i
      default-src 'self'; script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com; frame-ancestors 'none'; base-uri 'self'; form-action 'self';
      ```
    - Override response: ☑ Yes
-   - **Note on Inline Scripts Conflict**: This strict CSP policy intentionally omits `'unsafe-inline'` and `'unsafe-eval'` from `script-src` and should be treated as the security baseline for production. However, **the current site implementation includes inline scripts that will be blocked** by this policy:
-     1. **GTM Bootstrap Script** (`app/layout.tsx`): The standard GTM snippet includes an inline bootstrap script that initializes the data layer and loads the external GTM library
-     2. **Theme Flash Prevention Script** (`app/layout.tsx`): An inline script that reads localStorage and sets the theme before React hydrates to prevent a flash of wrong theme
+   - **Note on CSP Compatibility**: ✅ This strict CSP policy intentionally omits `'unsafe-inline'` and `'unsafe-eval'` from `script-src` and is **fully compatible** with the current site implementation. All JavaScript is loaded as external scripts:
+     1. **GTM Bootstrap Script**: Loaded from `/gtm-bootstrap.js` (external file served from `'self'`)
+     2. **Theme Flash Prevention Script**: Loaded from `/theme-init.js` (external file served from `'self'`)
+     3. **GTM Library**: Loaded from `https://www.googletagmanager.com` (explicitly allowed in CSP)
      
-     **To implement this CSP in production, you must choose one of the following approaches:**
-     
-     **Option A - Externalize Scripts (Recommended for Security)**:
-     - Move both the GTM bootstrap and theme script to external JavaScript files served from `'self'` (e.g., `/gtm-bootstrap.js`, `/theme-init.js`)
-     - Include them with `<script src="/gtm-bootstrap.js">` tags or Next.js `<Script>` component
-     - This maintains the strict CSP without `'unsafe-inline'`
-     
-     **Option B - Use Nonce-Based CSP**:
-     - Generate a unique nonce on each request and add it to both the CSP header and the inline script tags
-     - This approach provides strong XSS protection while allowing specific inline scripts
-     - Not practical with this site's static export architecture (requires server-side rendering)
-     
-     **Option C - Relax CSP with 'unsafe-inline'**:
-     - Add `'unsafe-inline'` to the `script-src` directive: `script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com`
-     - This allows the site to work as currently implemented but materially reduces XSS protection
-     - If you choose this option, explicitly document the security trade-off and ensure all other security controls are in place
-     
-     **Option D - Accept Functional Limitations**:
-     - Keep the strict CSP as documented, which will block the inline scripts
-     - GTM will not load (analytics will not function)
-     - Users will see a brief theme flash on page load
-     - Only viable if analytics are not required and UX impact is acceptable
+     The site maintains strong XSS protection through strict CSP while preserving all functionality including analytics and theme flash prevention. No `'unsafe-inline'` required.
 
 2. **Permissions-Policy**
    - Header name: `Permissions-Policy`
