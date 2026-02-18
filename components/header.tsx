@@ -8,10 +8,6 @@ export default function Header() {
         VP, Software Development | Engineering Leadership &amp; AI Acceleration
       </p>
       <div className="font-mono text-[13px] text-text-dim flex gap-4 flex-wrap">
-        <span className="flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-accent-green animate-[pulse-dot_2s_ease-in-out_infinite]" />
-          Available
-        </span>
         <span>15 years building teams &amp; products</span>
         <span>Miami-Fort Lauderdale Area</span>
       </div>
