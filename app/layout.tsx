@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 }
 
 // Validate and sanitize GTM ID
-const validateGTMId = (id: string | undefined): string => {
+const validateGTMId = (id: string | undefined): string | null => {
   const GTM_ID_PATTERN = /^GTM-[A-Z0-9]+$/
 
   if (!id) {
@@ -50,8 +50,8 @@ const validateGTMId = (id: string | undefined): string => {
     if (process.env.NODE_ENV === 'production') {
       throw new Error(message)
     }
-    console.error(message)
-    return 'GTM-5B2WMN' // fallback to known valid ID in non-production
+    console.warn(message + ' GTM disabled in development.')
+    return null // Disable GTM in non-production when ID is missing
   }
 
   if (!GTM_ID_PATTERN.test(id)) {
@@ -59,8 +59,8 @@ const validateGTMId = (id: string | undefined): string => {
     if (process.env.NODE_ENV === 'production') {
       throw new Error(message)
     }
-    console.error(message)
-    return 'GTM-5B2WMN' // fallback to known valid ID in non-production
+    console.warn(message + ' GTM disabled in development.')
+    return null // Disable GTM in non-production when ID is invalid
   }
 
   return id
@@ -76,35 +76,17 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${ibmPlexSans.variable} ${ibmPlexMono.variable}`}>
       <head>
-        {/* Prevent theme flash by applying theme before render 
-            Note: This inline script will require 'unsafe-inline' in CSP script-src
-            or must be moved to an external file. This is a trade-off between
-            theme flash prevention and strict CSP. See cloudfront-configuration.md */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  const theme = localStorage.getItem('theme');
-                  if (theme === 'light') {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                  } else if (!theme && window.matchMedia('(prefers-color-scheme: light)').matches) {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                  }
-                } catch (e) {}
-              })();
-            `,
-          }}
-        />
-        <Script id="google-tag-manager" strategy="afterInteractive">
-          {`
-            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-            })(window,document,'script','dataLayer',${JSON.stringify(GTM_ID)});
-          `}
-        </Script>
+        {/* Prevent theme flash by applying theme before render.
+            External script maintains strict CSP compliance without 'unsafe-inline'. */}
+        <Script src="/theme-init.js" strategy="beforeInteractive" />
+        {/* Google Tag Manager - External script for CSP compliance */}
+        {GTM_ID && (
+          <Script 
+            src="/gtm-bootstrap.js" 
+            strategy="afterInteractive"
+            data-gtm-id={GTM_ID}
+          />
+        )}
       </head>
       <body className="font-sans">
         {/* ASCII art Easter egg comment */}
@@ -129,15 +111,17 @@ export default function RootLayout({
 ║                                                               ║
 ╚═══════════════════════════════════════════════════════════════╝
         */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-            title="Google Tag Manager"
-          />
-        </noscript>
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: 'none', visibility: 'hidden' }}
+              title="Google Tag Manager"
+            />
+          </noscript>
+        )}
         {children}
       </body>
     </html>

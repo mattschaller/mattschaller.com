@@ -15,13 +15,20 @@ function HomeContent() {
   const [isInitialized, setIsInitialized] = useState(false)
   const searchParams = useSearchParams()
 
-  // Initialize theme from localStorage or system preference after mount
+  // Initialize theme from DOM (set by theme-init.js), localStorage, or system preference
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
-    if (savedTheme) {
-      setTheme(savedTheme)
-    } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    // Check if theme was already set by theme-init.js script
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    if (currentTheme === 'light') {
       setTheme('light')
+    } else {
+      // Fall back to localStorage or system preference if not set by script
+      const savedTheme = localStorage.getItem('theme') as 'dark' | 'light' | null
+      if (savedTheme) {
+        setTheme(savedTheme)
+      } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+        setTheme('light')
+      }
     }
     setIsInitialized(true)
   }, [])
@@ -73,11 +80,7 @@ function HomeContent() {
 
 export default function Home() {
   return (
-    <Suspense fallback={
-      <div className="max-w-content mx-auto px-6 sm:px-10 py-20">
-        <div className="text-text-secondary">Loading...</div>
-      </div>
-    }>
+    <Suspense fallback={null}>
       <HomeContent />
     </Suspense>
   )
