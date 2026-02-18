@@ -1,0 +1,17 @@
+/* TEAM */
+Name: Matt Schaller
+Role: VP, Software Development
+Location: Miami-Fort Lauderdale, FL
+Contact: matt [at] mattschaller.com
+LinkedIn: linkedin.com/in/mattschaller
+GitHub: github.com/mattschaller
+
+/* SITE */
+Last update: 2026-02-17
+Standards: HTML5, CSS3
+Software: Next.js, TypeScript, React, Tailwind CSS
+Deployment: GitHub Actions → AWS S3
+Hosting: AWS CloudFront
+
+/* NOTE */
+Built with intention. A few Easter eggs for those who look.

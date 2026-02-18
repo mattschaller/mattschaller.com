@@ -3,100 +3,55 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --bg-primary: #0a0e14;
+  --bg-secondary: #12171e;
+  --bg-tertiary: #1a2028;
+  --bg-accent: #1e2936;
+
+  --text-primary: #e6edf3;
+  --text-secondary: #9198a1;
+  --text-dim: #6e7681;
+
+  --accent-green: #3fb950;
+  --accent-blue: #58a6ff;
+  --accent-yellow: #d29922;
+  --accent-purple: #bc8cff;
+  --accent-cyan: #39d0d8;
+
+  --border-color: #21262d;
+  --border-accent: #30363d;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="light"] {
+  --bg-primary: #f6f8fa;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #f0f0f0;
+  --bg-accent: #e8e8e8;
+
+  --text-primary: #1f2328;
+  --text-secondary: #656d76;
+  --text-dim: #8b949e;
+
+  --accent-green: #1a7f37;
+  --accent-blue: #0969da;
+  --accent-yellow: #9a6700;
+  --accent-purple: #8250df;
+  --accent-cyan: #1b7c83;
+
+  --border-color: #d0d7de;
+  --border-accent: #d8dee4;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text-primary);
+  background: var(--bg-primary);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
 }
-
-/* Blog post styles */
-.prose {
-  @apply max-w-none;
-}
-
-.prose h1 {
-  @apply text-4xl font-bold mt-8 mb-4;
-}
-
-.prose h2 {
-  @apply text-3xl font-bold mt-6 mb-3;
-}
-
-.prose h3 {
-  @apply text-2xl font-semibold mt-5 mb-2;
-}
-
-.prose h4 {
-  @apply text-xl font-semibold mt-4 mb-2;
-}
-
-.prose h5 {
-  @apply text-lg font-semibold mt-3 mb-2;
-}
-
-.prose h6 {
-  @apply text-base font-semibold mt-2 mb-1;
-}
-
-.prose p {
-  @apply mb-4 leading-7;
-}
-
-.prose ul,
-.prose ol {
-  @apply mb-4 pl-6;
-}
-
-.prose ul {
-  @apply list-disc;
-}
-
-.prose ol {
-  @apply list-decimal;
-}
-
-.prose li {
-  @apply mb-2;
-}
-
-.prose blockquote {
-  @apply border-l-4 border-gray-300 pl-4 italic my-4;
-}
-
-.prose a {
-  @apply text-blue-600 hover:text-blue-800 underline;
-}
-
-.prose img {
-  @apply rounded-lg my-4;
-}
-
-.prose code {
-  @apply bg-gray-100 px-1.5 py-0.5 rounded text-sm font-mono;
-}
-
-.prose pre {
-  @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto my-4;
-}
-
-.prose pre code {
-  @apply bg-transparent p-0;
-}
-

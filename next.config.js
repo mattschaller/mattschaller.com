@@ -6,6 +6,55 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
+  async headers() {
+    // Note: These headers will NOT work with "output: export" in production.
+    // They are defined here for local development/testing only.
+    // In production, security headers are applied via CloudFront.
+    // See docs/security/cloudfront-configuration.md for production setup.
+    
+    // Use relaxed CSP in development, strict CSP in production (via CloudFront)
+    const isDev = process.env.NODE_ENV === 'development'
+    
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              isDev 
+                ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com https://www.google-analytics.com"
+                : "script-src 'self' https://www.googletagmanager.com https://www.google-analytics.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' data: https:",
+              "font-src 'self' data:",
+              "connect-src 'self' https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://region1.analytics.google.com",
+              "frame-ancestors 'none'",
+              "base-uri 'self'",
+              "form-action 'self'",
+            ].join('; '),
+          },
+          {
+            key: 'X-Frame-Options',
+            value: 'DENY',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+          {
+            key: 'Referrer-Policy',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
+          },
+        ],
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig

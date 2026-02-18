@@ -23,6 +23,8 @@ jobs:
         run: npm ci
       
       - name: Build
+        env:
+          GTM_TRACKING_ID: ${{ secrets.GTM_TRACKING_ID }}
         run: npm run build
       
       - name: Configure AWS Credentials

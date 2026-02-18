@@ -9,12 +9,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: 'var(--background)',
-        foreground: 'var(--foreground)',
+        'bg-primary': 'var(--bg-primary)',
+        'bg-secondary': 'var(--bg-secondary)',
+        'bg-tertiary': 'var(--bg-tertiary)',
+        'bg-accent': 'var(--bg-accent)',
+        'text-primary': 'var(--text-primary)',
+        'text-secondary': 'var(--text-secondary)',
+        'text-dim': 'var(--text-dim)',
+        'border-color': 'var(--border-color)',
+        'border-accent': 'var(--border-accent)',
+        'accent-green': 'var(--accent-green)',
+        'accent-blue': 'var(--accent-blue)',
+        'accent-yellow': 'var(--accent-yellow)',
+        'accent-purple': 'var(--accent-purple)',
+        'accent-cyan': 'var(--accent-cyan)',
+      },
+      fontFamily: {
+        sans: ['var(--font-ibm-plex-sans)', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
+        mono: ['var(--font-ibm-plex-mono)', 'Consolas', 'Monaco', 'monospace'],
+      },
+      maxWidth: {
+        content: '800px',
       },
     },
   },
   plugins: [],
 }
 export default config
-
